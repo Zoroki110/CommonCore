@@ -6,7 +6,7 @@
 /*   By: trouilla <trouilla@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/04 17:47:30 by trouilla          #+#    #+#             */
-/*   Updated: 2024/11/05 20:27:59 by trouilla         ###   ########.fr       */
+/*   Updated: 2024/11/06 18:12:12 by trouilla         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ size_t	ft_strlen(const char *str)
 	return (i);
 }
 
-char	*ft_strdup(char const *src)
+char	*ft_strdup(const char *src)
 {
 	char	*dest;
 	int		len;
@@ -44,12 +44,12 @@ char	*ft_strdup(char const *src)
 
 	if (!src)
 		return (NULL);
-	len = ft_strlen(src);
 	i = 0;
-	dest = malloc(sizeof(char) * len + 1);
+	len = ft_strlen(src);
+	dest = (char *)malloc(sizeof(char) * (len + 1));
 	if (!dest)
 		return (NULL);
-	while (src[i])
+	while (i < len)
 	{
 		dest[i] = src[i];
 		i++;
@@ -60,44 +60,28 @@ char	*ft_strdup(char const *src)
 
 char	*ft_strjoin(char const *s1, char const *s2)
 {
-	size_t	totlen;
-	size_t	i;
-	size_t	j;
-	char	*res;
+	char	*str;
+	int		len_s1;
+	int		len_s2;
+	int		i;
 
-	if (!s1 || !s2)
+	if (!s1 && !s2)
 		return (NULL);
-	totlen = ft_strlen(s1) + ft_strlen(s2);
-	res = (char *)malloc(sizeof(char) * (totlen + 1));
-	if (!res)
+	if (!s1)
+		return (ft_strdup(s2));
+	if (!s2)
+		return (ft_strdup(s1));
+	len_s1 = ft_strlen(s1);
+	len_s2 = ft_strlen(s2);
+	str = (char *)malloc((len_s1 + len_s2 + 1) * sizeof(char));
+	if (!str)
 		return (NULL);
-	i = 0;
-	while (s1[i])
-	{
-		res[i] = s1[i];
-		i++;
-	}
-	j = 0;
-	while (s2[j])
-		res[i++] = s2[j++];
-	res[i] = '\0';
-	return (res);
-}
-
-size_t	ft_strlcpy(char *dst, const char *src, size_t dstsize)
-{
-	size_t	i;
-	size_t	len;
-
-	len = ft_strlen(src);
-	if (dstsize == 0)
-		return (len);
-	i = 0;
-	while (src[i] && i < dstsize - 1)
-	{
-		dst[i] = src[i];
-		i++;
-	}
-	dst[i] = '\0';
-	return (len);
+	i = -1;
+	while (++i < len_s1)
+		str[i] = s1[i];
+	i--;
+	while (++i < len_s1 + len_s2)
+		str[i] = s2[i - len_s1];
+	str[i] = '\0';
+	return (str);
 }

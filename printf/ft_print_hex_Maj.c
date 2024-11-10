@@ -6,7 +6,7 @@
 /*   By: trouilla <trouilla@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/23 20:02:19 by trouilla          #+#    #+#             */
-/*   Updated: 2024/10/25 22:14:18 by trouilla         ###   ########.fr       */
+/*   Updated: 2024/11/08 21:35:49 by trouilla         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,8 +32,8 @@ int	ft_print_hex_maj(unsigned int n)
 /*
 int main()
 {
-	int i = 15;
-	ft_print_hex_Maj(i);
+	int i = -2147483648;
+	ft_print_hex_maj(i);
 	return 0;
 }
 */
