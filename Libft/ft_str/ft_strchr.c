@@ -1,30 +1,40 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstclear.c                                      :+:      :+:    :+:   */
+/*   ft_strchr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: trouilla <trouilla@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/10/18 18:14:12 by trouilla          #+#    #+#             */
-/*   Updated: 2024/10/19 14:46:19 by trouilla         ###   ########.fr       */
+/*   Created: 2024/10/15 11:19:10 by trouilla          #+#    #+#             */
+/*   Updated: 2024/11/10 19:36:01 by trouilla         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	ft_lstclear(t_list **lst, void (*del)(void *))
+char	*ft_strchr(const char *s, int c)
 {
-	t_list	*current;
-	t_list	*tmp;
+	size_t	i;
 
-	if (!lst || !del)
-		return ;
-	current = *lst;
-	while (current)
+	i = 0;
+	while (s[i])
 	{
-		tmp = current->next;
-		ft_lstdelone(current, del);
-		current = tmp;
+		if (s[i] == (unsigned char)c)
+			return ((char *)s + i);
+		i++;
 	}
-	*lst = NULL;
+	if (s[i] == (unsigned char)c)
+		return ((char *)s + i);
+	return (NULL);
 }
+/*
+int	main(void)
+{
+	char str[] = "Mais non! Quoi. Comment ose tu!";
+	char ch = '.';
+	char *ret;
+
+	ret = ft_strchr(str, ch);
+	printf("String after is - |%s|\n", ch, ret);
+	return (0);
+}*/

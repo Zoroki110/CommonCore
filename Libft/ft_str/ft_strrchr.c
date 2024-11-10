@@ -1,24 +1,40 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstiter.c                                       :+:      :+:    :+:   */
+/*   ft_strrchr.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: trouilla <trouilla@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/10/18 18:19:27 by trouilla          #+#    #+#             */
-/*   Updated: 2024/10/18 18:43:15 by trouilla         ###   ########.fr       */
+/*   Created: 2024/10/15 11:18:23 by trouilla          #+#    #+#             */
+/*   Updated: 2024/11/10 20:18:40 by trouilla         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	ft_lstiter(t_list *lst, void (*f)(void *))
+char	*ft_strrchr(const char *s, int c)
 {
-	if (!lst || !f)
-		return ;
-	while (lst != NULL)
+	int	i;
+
+	i = ft_strlen(s);
+	if ((unsigned char)c == '\0')
+		return ((unsigned char)&s[i]);
+	while (i >= 0)
 	{
-		f(lst->content);
-		lst = lst->next;
+		if (s[i] == (unsigned char)c)
+			return ((char *)&s[i]);
+		i--;
 	}
+	return (NULL);
 }
+/*
+int main ()
+{
+	char str[] = "Alors . on chercher la .derniere occurence. monstre";
+	char ch = '.';
+	char *res;
+
+	res = ft_strrchr(str, ch);
+	printf("%s\n", res);
+	return (0);
+}*/

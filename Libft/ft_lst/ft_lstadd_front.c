@@ -1,38 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strrchr.c                                       :+:      :+:    :+:   */
+/*   ft_lstadd_front.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: trouilla <trouilla@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/10/15 11:18:23 by trouilla          #+#    #+#             */
-/*   Updated: 2024/10/18 17:39:18 by trouilla         ###   ########.fr       */
+/*   Created: 2024/10/18 17:59:09 by trouilla          #+#    #+#             */
+/*   Updated: 2024/11/10 17:28:14 by trouilla         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+/*
+*	DESCRIPTION
+*	Adds the element ’new’ at the beginning of the list.
+*	PARAMETERS
+*	#1. The address of a pointer to the first link of a list.
+*	#2. The address of a pointer to the element to be added to the list.
+*	RETURN VALUES
+*	-
+*/
+
 #include "libft.h"
 
-char	*ft_strrchr(const char *s, int c)
+void	ft_lstadd_front(t_list **lst, t_list *new)
 {
-	int	i;
-
-	i = ft_strlen(s);
-	while (i >= 0)
+	if (lst && new)
 	{
-		if ((unsigned char)s[i] == (unsigned char)c)
-			return ((char *) s + i);
-		i--;
+		new->next = *lst;
+		*lst = new;
 	}
-	return (NULL);
 }
-/*
-int main ()
-{
-	char str[] = "Alors . on chercher la .derniere occurence. monstre";
-	char ch = '.';
-	char *res;
-
-	res = ft_strrchr(str, ch);
-	printf("%s\n", res);
-	return (0);
-}*/

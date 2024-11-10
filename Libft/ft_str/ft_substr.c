@@ -1,43 +1,38 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_memcpy.c                                        :+:      :+:    :+:   */
+/*   ft_substr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: trouilla <trouilla@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/10/15 11:19:34 by trouilla          #+#    #+#             */
-/*   Updated: 2024/10/17 04:38:44 by trouilla         ###   ########.fr       */
+/*   Created: 2024/10/15 11:23:20 by trouilla          #+#    #+#             */
+/*   Updated: 2024/11/10 20:21:00 by trouilla         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	*ft_memcpy(void *dst, const void *src, size_t n)
+char	*ft_substr(char const *s, unsigned int start, size_t len)
 {
-	size_t				i;
-	unsigned char		*d;
-	const unsigned char	*s;
+	char	*res;
+	size_t	i;
+	size_t	str_len;
 
 	i = 0;
-	d = dst;
-	s = src;
-	if (!dst && !src)
+	if (!s)
 		return (NULL);
-	while (i < n)
-	{
-		d[i] = s[i];
-		i++;
-	}
-	return (dst);
+	str_len = ft_strlen(s);
+	if (start >= str_len || len == 0)
+		return (ft_strdup(""));
+	if (start + len > str_len)
+		res = malloc(sizeof(char) * (str_len - start + 1));
+	else
+		res = malloc(sizeof(char) * (len + 1));
+	if (!res)
+		return (NULL);
+	i = 0;
+	while (i < len && s[start])
+		res[i++] = s[start++];
+	res[i] = '\0';
+	return (res);
 }
-/*
-int	main(void)
-{
-	char src[50] = "Yo joe comme on ce retrouve !";
-	char dest[50];
-	char *ret;
-
-	ret = ft_memcpy(dest, src, 10);
-	printf("%s", ret);
-	return (0);
-}*/

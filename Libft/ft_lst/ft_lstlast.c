@@ -1,34 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_memcmp.c                                        :+:      :+:    :+:   */
+/*   ft_lstlast.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: trouilla <trouilla@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/10/15 11:19:46 by trouilla          #+#    #+#             */
-/*   Updated: 2024/10/17 04:10:39 by trouilla         ###   ########.fr       */
+/*   Created: 2024/10/18 18:05:25 by trouilla          #+#    #+#             */
+/*   Updated: 2024/11/10 17:28:18 by trouilla         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+/*
+*	DESCRIPTION
+*	Returns the last element of the list.
+*	PARAMETERS
+*	#1. The beginning of the list.
+*	RETURN VALUES
+*	Last element of the list.
+*/
+
 #include "libft.h"
 
-int	ft_memcmp(const void *s1, const void *s2, size_t n)
+t_list	*ft_lstlast(t_list *lst)
 {
-	size_t			i;
-
-	i = 0;
-	while (i < n && *(unsigned char *)(s1 + i) == *(unsigned char *)(s2 + i))
-		i++;
-	if (i < n)
-		return (*(unsigned char *)(s1 + i) - *(unsigned char *)(s2 + i));
-	return (0);
+	if (!lst)
+		return (NULL);
+	while (lst->next)
+		lst = lst->next;
+	return (lst);
 }
-/*
-int	main(void)
-{
-	char str1[50] = "Yo batard de fion";
-	char str2[50] = "Yo batarr de con";
-	int n = 17;
-	printf("%d", ft_memcmp(str1, str2, n));
-	return (0);
-}*/

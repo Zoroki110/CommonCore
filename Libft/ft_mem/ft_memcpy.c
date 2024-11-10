@@ -1,33 +1,45 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strncmp.c                                       :+:      :+:    :+:   */
+/*   ft_memcpy.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: trouilla <trouilla@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/10/17 01:12:47 by trouilla          #+#    #+#             */
-/*   Updated: 2024/10/17 03:20:22 by trouilla         ###   ########.fr       */
+/*   Created: 2024/10/15 11:19:34 by trouilla          #+#    #+#             */
+/*   Updated: 2024/11/10 18:11:53 by trouilla         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int	ft_strncmp(const char *s1, const char *s2, size_t n)
+void	*ft_memcpy(void *dst, const void *src, size_t n)
 {
-	size_t	i;
+	size_t				i;
+	unsigned char		*d;
+	unsigned char		*s;
 
 	i = 0;
-	while (s1[i] && s2[i] && s1[i] == s2[i] && i < n)
-		i++;
-	if (i < n)
-		return ((unsigned char) s1[i] - (unsigned char) s2[i]);
-	return (0);
+	d = (unsigned char *)dst;
+	s = (unsigned char *)src;
+	if (!dst && !src)
+		return (NULL);
+	while (n > 0)
+	{
+		*d = *s;
+		d++;
+		s++;
+		n--;
+	}
+	return (dst);
 }
 /*
-int main()
+int	main(void)
 {
-	char s1[]="test";
-	char s2[]="testss";
-	printf("%d\n", ft_strncmp(s1, s2, 7));
-	return 0;
+	char src[50] = "Yo joe comme on ce retrouve !";
+	char dest[50];
+	char *ret;
+
+	ret = ft_memcpy(dest, src, 10);
+	printf("%s", ret);
+	return (0);
 }*/

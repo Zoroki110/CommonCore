@@ -1,39 +1,45 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_memchr.c                                        :+:      :+:    :+:   */
+/*   ft_memmove.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: trouilla <trouilla@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/10/15 11:19:51 by trouilla          #+#    #+#             */
-/*   Updated: 2024/10/17 04:49:51 by trouilla         ###   ########.fr       */
+/*   Created: 2024/10/15 11:19:25 by trouilla          #+#    #+#             */
+/*   Updated: 2024/11/10 18:11:54 by trouilla         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	*ft_memchr(const void *s, int c, size_t n)
+void	*ft_memmove(void *dst, const void *src, size_t len)
 {
 	size_t			i;
-	unsigned char	*str;
+	unsigned char	*d;
+	unsigned char	*s;
 
 	i = 0;
-	str = (unsigned char *)s;
-	while (i < n)
+	d = (unsigned char *)dst;
+	s = (unsigned char *)src;
+	if (!dst && !src)
+		return (NULL);
+	if (d > s)
 	{
-		if ((unsigned char)str[i] == (unsigned char)c)
-			return (&str[i]);
-		i++;
+		while (len-- > 0)
+			d[len] = s[len];
 	}
-	return (NULL);
+	else
+		ft_memcpy(dst, src, len);
+	return (dst);
 }
 /*
 int	main(void)
 {
-	char src[50] = "regarde moi samuel !";
+	char str1[50];
+	char str2[50] = "Recopier oh oui";
 	char *ret;
 
-	ret = ft_memchr(src, 's', 15);
+	ret = ft_memmove(str1, str2, 21);
 	printf("%s", ret);
 	return (0);
 }*/

@@ -6,36 +6,46 @@
 /*   By: trouilla <trouilla@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/15 11:21:02 by trouilla          #+#    #+#             */
-/*   Updated: 2024/10/15 14:32:23 by trouilla         ###   ########.fr       */
+/*   Updated: 2024/11/10 19:01:58 by trouilla         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
+static int	ft_sign(int num, int min_count, int max_count)
+{
+	if (min_count == 1)
+		num = -num;
+	if ((min_count > 0 && max_count > 0) || min_count > 1 || max_count > 1)
+		num = 0;
+	return (num);
+}
+
 int	ft_atoi(const char *str)
 {
 	int	i;
-	int	signe;
-	int	result;
+	int	min_count;
+	int	max_count;
+	int	num;
 
 	i = 0;
-	signe = 1;
-	result = 0;
-	while ((str[i] >= 9 && str[i] <= 13) || str[i] == 32)
+	min_count = 0;
+	max_count = 0;
+	num = 0;
+	while ((str[i] == ' ' || (str[i] >= 9 && str[i] <= 13)) && str[i])
 		i++;
-	if (str[i] == '-')
+	while ((str[i] == '+' || str[i] == '-') && str[i])
 	{
-		signe *= (-1);
+		if (str[i] == '-')
+			min_count++;
+		if (str[i] == '+')
+			max_count++;
 		i++;
 	}
-	else if (str[i] == '+')
-		i++;
-	while (str[i] >= '0' && str[i] <= '9')
-	{
-		result = result * 10 + (str[i] - 48);
-		i++;
-	}
-	return (result * signe);
+	while ((str[i] >= '0' && str[i] <= '9') && str[i])
+		num = (num * 10) + (str[i++] - 48);
+	num = ft_sign(num, min_count, max_count);
+	return (num);
 }
 /*
 #include <stdio.h>

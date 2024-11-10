@@ -1,28 +1,42 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstadd_back.c                                   :+:      :+:    :+:   */
+/*   ft_strdup.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: trouilla <trouilla@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/10/18 18:07:39 by trouilla          #+#    #+#             */
-/*   Updated: 2024/10/18 18:45:33 by trouilla         ###   ########.fr       */
+/*   Created: 2024/10/15 11:19:04 by trouilla          #+#    #+#             */
+/*   Updated: 2024/11/10 19:37:25 by trouilla         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	ft_lstadd_back(t_list **lst, t_list *new)
+char	*ft_strdup(char const *src)
 {
-	t_list	*last;
+	char	*dest;
+	int		len;
+	int		i;
 
-	if (lst == NULL)
-		return ;
-	if (*lst == NULL)
+	len = ft_strlen(src);
+	i = 0;
+	dest = malloc(sizeof(char) * (len + 1));
+	if (!dest)
+		return (NULL);
+	while (src[i])
 	{
-		*lst = new;
-		return ;
+		dest[i] = src[i];
+		i++;
 	}
-	last = ft_lstlast(*lst);
-	last->next = new;
+	dest[i] = '\0';
+	return (dest);
 }
+/*
+int	main(void)
+{
+	char s[] = "Alors ca a marche ?";
+	char *cpy;
+	cpy = ft_strdup(s);
+	printf("%s\n", cpy);
+	return (0);
+}*/

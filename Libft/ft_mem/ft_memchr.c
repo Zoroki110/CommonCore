@@ -1,52 +1,40 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_memmove.c                                       :+:      :+:    :+:   */
+/*   ft_memchr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: trouilla <trouilla@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/10/15 11:19:25 by trouilla          #+#    #+#             */
-/*   Updated: 2024/10/17 04:45:19 by trouilla         ###   ########.fr       */
+/*   Created: 2024/10/15 11:19:51 by trouilla          #+#    #+#             */
+/*   Updated: 2024/11/10 18:11:51 by trouilla         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	*ft_memmove(void *dst, const void *src, size_t len)
+void	*ft_memchr(const void *s, int c, size_t n)
 {
 	size_t			i;
-	unsigned char	*d;
-	unsigned char	*s;
+	unsigned char	*str;
 
 	i = 0;
-	d = (unsigned char *)dst;
-	s = (unsigned char *)src;
-	if (!dst && !src)
-		return (NULL);
-	if (d > s)
+	str = (unsigned char *)s;
+	while (i < n)
 	{
-		while (i < len)
-		{
-			d[len - 1] = s[len - 1];
-			len--;
-		}
-		return (dst);
-	}
-	while (i < len)
-	{
-		d[i] = s[i];
+		if (*str == (unsigned char)c)
+			return (str);
 		i++;
+		str++;
 	}
-	return (dst);
+	return (NULL);
 }
 /*
 int	main(void)
 {
-	char str1[50];
-	char str2[50] = "Recopier oh oui";
+	char src[50] = "regarde moi samuel !";
 	char *ret;
 
-	ret = ft_memmove(str1, str2, 21);
+	ret = ft_memchr(src, 's', 15);
 	printf("%s", ret);
 	return (0);
 }*/
