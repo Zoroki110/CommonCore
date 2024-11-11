@@ -6,7 +6,7 @@
 /*   By: trouilla <trouilla@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/15 11:18:23 by trouilla          #+#    #+#             */
-/*   Updated: 2024/11/10 20:18:40 by trouilla         ###   ########.fr       */
+/*   Updated: 2024/11/10 21:56:19 by trouilla         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ char	*ft_strrchr(const char *s, int c)
 
 	i = ft_strlen(s);
 	if ((unsigned char)c == '\0')
-		return ((unsigned char)&s[i]);
+		return ((char *)&s[i]);
 	while (i >= 0)
 	{
 		if (s[i] == (unsigned char)c)
