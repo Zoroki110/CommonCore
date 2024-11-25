@@ -1,40 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   so_long.c                                          :+:      :+:    :+:   */
+/*   key_move.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: trouilla <trouilla@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/11/25 14:12:29 by trouilla          #+#    #+#             */
-/*   Updated: 2024/11/25 18:05:52 by trouilla         ###   ########.fr       */
+/*   Created: 2024/11/25 17:00:25 by trouilla          #+#    #+#             */
+/*   Updated: 2024/11/25 18:04:48 by trouilla         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/so_long.h"
 
-void	map_init(t_map *map, char **av)
+void	found_player(t_map *map)
 {
-	map->filename = av[1];
 	map->player.y = 0;
 	map->player.x = 0;
-	map->y = 0;
-	map->x = 0;
-	map->c = 0;
-	map->p = 0;
-	map->e = 0;
-	map->exit = 0;
-	map->move = 0;
-	map->check_c = 0;
-	map->check_e = 0;
-}
-
-int	main(int ac, char **av)
-{
-	t_map	map;
-
-	if (ac == 2)
+	while (map->player.y < map->y)
 	{
-		map_init(&map, av);
-		map_check(&map);
+		while (map->player.x < map->x)
+		{
+			if (map->array[map->player.y][map->player.x] == 'P')
+				break ;
+			map->player.x++;
+		}
+		if (map->array[map->player.y][map->player.x] == 'P')
+			break ;
+		map->player.x = 0;
+		map->player.y++;
 	}
 }
