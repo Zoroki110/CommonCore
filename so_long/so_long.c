@@ -6,7 +6,7 @@
 /*   By: trouilla <trouilla@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/25 14:12:29 by trouilla          #+#    #+#             */
-/*   Updated: 2024/11/26 11:06:26 by trouilla         ###   ########.fr       */
+/*   Updated: 2024/11/26 14:53:09 by trouilla         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ void	map_init(t_map *map, char **av)
 int	main(int ac, char **av)
 {
 	t_map	map;
-
+	
 	if (ac == 2)
 	{
 		map_init(&map, av);

@@ -6,7 +6,7 @@
 /*   By: trouilla <trouilla@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/25 14:11:56 by trouilla          #+#    #+#             */
-/*   Updated: 2024/11/26 11:30:04 by trouilla         ###   ########.fr       */
+/*   Updated: 2024/11/26 15:22:58 by trouilla         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,11 @@ static void	check_size(t_map *map)
 	y = 0;
 	x = 0;
 	max = ft_strlen(map->array[y]);
+	if (max == 0)
+	{
+		write (1, "error map\n", 10);
+		exit (EXIT_FAILURE);
+	}
 	while (y < map->y)
 	{
 		x = ft_strlen(map->array[y]);
@@ -54,19 +59,21 @@ static void	check_wall(t_map *map)
 	int	x;
 
 	x = 0;
-	while (map->array[0][x] == 1 && map->array[1][x])
+	if (map->array[0] == NULL)
+		error_size(map);
+	while (x < map->x && map->array[0][x] == '1')
 		x++;
 	if (map->array[1][x] != '\0')
 		error_wall(map);
 	y = 1;
 	while (y < map->y)
 	{
-		if (map->array[y][0] != 1 || map->array[y][map->x - 1] != 1)
+		if (map->array[y][0] != '1' || map->array[y][map->x - 1] != '1')
 			error_wall(map);
 		y++;
 	}
 	x = 0;
-	while (map->array[map->y - 1][x] == 1)
+	while (map->array[map->y - 1][x] == '1')
 		x++;
 	if (map->array[map->y - 1][x] != '\0')
 		error_wall(map);
@@ -88,7 +95,7 @@ static void	check_pec(t_map *map)
 				map->e += 1;
 			else if (map->array[y][x] == 'C')
 				map->c += 1;
-			else if (map->array[y][x] == 0 || map->array[y][x] == 1)
+			else if (map->array[y][x] == '0' || map->array[y][x] == '1')
 				;
 			else
 				error_pec(map);

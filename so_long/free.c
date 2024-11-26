@@ -6,7 +6,7 @@
 /*   By: trouilla <trouilla@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/25 14:12:14 by trouilla          #+#    #+#             */
-/*   Updated: 2024/11/26 11:06:00 by trouilla         ###   ########.fr       */
+/*   Updated: 2024/11/26 15:17:33 by trouilla         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,13 @@
 
 int	ft_free_array(char **str, int i)
 {
+	if (str == NULL)
+		return 0;
 	while (i > 0)
-		free(str[i--]);
+	{
+		if (str != NULL)
+			free(str[i--]);
+	}
 	free(str);
 	return (0);
 }
