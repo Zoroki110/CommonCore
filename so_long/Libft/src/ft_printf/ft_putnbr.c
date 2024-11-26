@@ -6,7 +6,7 @@
 /*   By: trouilla <trouilla@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/23 14:23:28 by trouilla          #+#    #+#             */
-/*   Updated: 2024/11/26 11:14:04 by trouilla         ###   ########.fr       */
+/*   Updated: 2024/11/26 11:35:18 by trouilla         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ static int	ft_neg(int nb)
 	write(1, "-", 1);
 	count++;
 	nb = nb * (-1);
-	count += ft_putnbr(nb);
+	count += ft_putnbr_printf(nb);
 	return (count);
 }
 
@@ -42,8 +42,8 @@ int	ft_putnbr_printf(int nb)
 		return (ft_neg(nb));
 	if (nb > 9)
 	{
-		count += ft_putnbr(nb / 10);
-		count += ft_putnbr(nb % 10);
+		count += ft_putnbr_printf(nb / 10);
+		count += ft_putnbr_printf(nb % 10);
 	}
 	else
 	{

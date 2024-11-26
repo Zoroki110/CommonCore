@@ -6,7 +6,7 @@
 /*   By: trouilla <trouilla@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/04 17:10:57 by trouilla          #+#    #+#             */
-/*   Updated: 2024/11/06 18:45:13 by trouilla         ###   ########.fr       */
+/*   Updated: 2024/11/26 11:43:14 by trouilla         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,10 +28,10 @@ static char	*fill_stash(int fd, char *stash)
 			return (NULL);
 		}
 		buff[readed] = '\0';
-		tmp = ft_strjoin(stash, buff);
+		tmp = ft_strjoin_gnl(stash, buff);
 		free(stash);
 		stash = tmp;
-		if (stash && ft_strchr(stash, '\n'))
+		if (stash && ft_strchr_gnl(stash, '\n'))
 			break ;
 	}
 	return (stash);

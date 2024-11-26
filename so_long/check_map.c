@@ -6,7 +6,7 @@
 /*   By: trouilla <trouilla@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/25 14:11:56 by trouilla          #+#    #+#             */
-/*   Updated: 2024/11/26 11:06:11 by trouilla         ###   ########.fr       */
+/*   Updated: 2024/11/26 11:30:04 by trouilla         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,7 +68,7 @@ static void	check_wall(t_map *map)
 	x = 0;
 	while (map->array[map->y - 1][x] == 1)
 		x++;
-	if (map->array[map->y - 1] != '\0')
+	if (map->array[map->y - 1][x] != '\0')
 		error_wall(map);
 }
 

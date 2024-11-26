@@ -6,7 +6,7 @@
 /*   By: trouilla <trouilla@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/29 21:33:42 by trouilla          #+#    #+#             */
-/*   Updated: 2024/11/26 11:13:03 by trouilla         ###   ########.fr       */
+/*   Updated: 2024/11/26 11:43:01 by trouilla         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,9 +25,9 @@
 
 char		*get_next_line(int fd);
 int			ft_strchr_gnl(const char *s, char c);
-size_t		ft_strlen(const char *str);
+size_t		ft_strlen_gnl(const char *str);
 char		*ft_strdup(const char *src);
-char		*ft_strjoin(char const *s1, char const *s2);
+char		*ft_strjoin_gnl(char const *s1, char const *s2);
 size_t		ft_strlcpy(char *dst, const char *src, size_t dstsize);
 
 #endif

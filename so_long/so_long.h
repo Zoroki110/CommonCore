@@ -6,7 +6,7 @@
 /*   By: trouilla <trouilla@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/11 18:16:56 by trouilla          #+#    #+#             */
-/*   Updated: 2024/11/25 18:18:59 by trouilla         ###   ########.fr       */
+/*   Updated: 2024/11/26 11:30:58 by trouilla         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,7 +76,7 @@ void			error_filename(void);
 void			error_open(void);
 void			error_size(t_map *map);
 void			error_wall(t_map *map);
-void			error_PEC(t_map *map);
+void			error_pec(t_map *map);
 
 void			map_array(t_map *map);
 
