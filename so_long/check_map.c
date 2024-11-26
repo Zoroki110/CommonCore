@@ -6,11 +6,11 @@
 /*   By: trouilla <trouilla@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/25 14:11:56 by trouilla          #+#    #+#             */
-/*   Updated: 2024/11/25 18:11:42 by trouilla         ###   ########.fr       */
+/*   Updated: 2024/11/26 11:06:11 by trouilla         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/so_long.h"
+#include "so_long.h"
 
 static void	check_file(t_map *map)
 {

@@ -6,11 +6,11 @@
 /*   By: trouilla <trouilla@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/25 14:12:03 by trouilla          #+#    #+#             */
-/*   Updated: 2024/11/25 18:04:35 by trouilla         ###   ########.fr       */
+/*   Updated: 2024/11/26 11:05:55 by trouilla         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/so_long.h"
+#include "so_long.h"
 
 void	error_filename(void)
 {

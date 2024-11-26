@@ -6,11 +6,11 @@
 /*   By: trouilla <trouilla@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/25 16:41:45 by trouilla          #+#    #+#             */
-/*   Updated: 2024/11/25 18:04:28 by trouilla         ###   ########.fr       */
+/*   Updated: 2024/11/26 11:06:35 by trouilla         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/so_long.h"
+#include "so_long.h"
 
 void	move_on_path(int x, int y, t_map *map)
 {

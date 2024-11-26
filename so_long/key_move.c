@@ -6,11 +6,11 @@
 /*   By: trouilla <trouilla@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/25 17:00:25 by trouilla          #+#    #+#             */
-/*   Updated: 2024/11/25 18:04:48 by trouilla         ###   ########.fr       */
+/*   Updated: 2024/11/26 11:06:30 by trouilla         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/so_long.h"
+#include "so_long.h"
 
 void	found_player(t_map *map)
 {

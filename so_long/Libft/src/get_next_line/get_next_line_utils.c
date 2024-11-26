@@ -6,13 +6,13 @@
 /*   By: trouilla <trouilla@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/04 17:47:30 by trouilla          #+#    #+#             */
-/*   Updated: 2024/11/06 18:12:12 by trouilla         ###   ########.fr       */
+/*   Updated: 2024/11/26 11:12:38 by trouilla         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
 
-int	ft_strchr(const char *s, char c)
+int	ft_strchr_gnl(const char *s, char c)
 {
 	int	i;
 

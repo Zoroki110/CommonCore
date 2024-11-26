@@ -6,70 +6,41 @@
 #    By: trouilla <trouilla@student.s19.be>         +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/11/25 14:17:06 by trouilla          #+#    #+#              #
-#    Updated: 2024/11/25 18:20:13 by trouilla         ###   ########.fr        #
+#    Updated: 2024/11/26 11:19:08 by trouilla         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME = so_long
-
 CC = cc
 
-CFLAGS = -Wall -Wextra -Werror -g
+CFLAGS = -c -Wall -Werror -Wextra 
 
-MLX_PATH = mlx/
+LIBFT = Libft
+MY_LIBFT = $(LIBFT)/libft.a
 
-MLX_LIB = $(MLX_PATH)libmlx.a
+NAME = so_long
 
-MLX_FLAGS = -Lmlx -lmlx -framework OpenGL -framework AppKit
+MY_SOURCES = check_map.c check_path.c error.c free.c generate_map.c key_moves.c so_long.c
 
-LIBFT_PATH = libft/
+MY_OBJECTS = $(MY_SOURCES:.c=.o)
 
-LIBFT_LIB = $(LIBFT_PATH)libft.a
+RM = rm -f
 
-Y = "\033[33m"
-R = "\033[31m"
-G = "\033[32m"
-B = "\033[34m"
-X = "\033[0m"
-UP = "\033[A"
-CUT = "\033[K"
+all: $(NAME)
 
-CFILES = \
-		check_map.c\
-		error.c\
-		free.c\
-		generate_map.c\
-		so_long.c\
-		check_path.c\
-		key_move.c\
+$(NAME) : $(MY_OBJECTS)
+	$(MAKE) -C $(MY_LIBFT)
+	$(CC) -lmlx -framework OpenGL -framework Appkit  $(LIBFT) -o $(NAME) $(MY_OBJECTS)
 
-OBJECTS = $(CFILES:.c=.o)
-
-all: subsystems $(NAME)
-
-%.o : %.c
-	$(CC) $(CFLAGS) -Imlx -c -o $@ $<
-
-subsystems:
-	@make -C $(MLX_PATH) all
-	@make -C $(LIBFT_PATH) all
-
-$(NAME): $(OBJECTS)
-	$(CC) $(CFLAGS) $(MLX_FLAGS) $(OBJECTS) $(MLX_LIB) $(LIBFT_LIB) -o $(NAME)
+$(MY_OBJECTS):
+	$(CC) $(CFLAGS) ${@:.o=.c} -o $@
 
 clean:
-	make -C $(MLX_PATH) clean
-	make -C $(LIBFT_PATH) clean
-	rm -f $(OBJECTS)
+	$(MAKE) clean -C $(LIBFT)
+	${RM} ${MY_OBJECTS}
+
 
 fclean: clean
-	make -C $(LIBFT_PATH) fclean
-	make -C $(MLX_PATH) fclean
-	rm -f $(NAME)
+	$(MAKE) fclean -C $(LIBFT)
+	${RM} ${NAME}
 
 re: fclean all
-
-norm:
-	norminette libft check_map.c error.c free.c generate_map.c so_long.c
-
-.PHONY: all clean fclean re norm

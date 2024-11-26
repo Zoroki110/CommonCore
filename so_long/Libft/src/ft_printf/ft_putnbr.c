@@ -6,7 +6,7 @@
 /*   By: trouilla <trouilla@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/23 14:23:28 by trouilla          #+#    #+#             */
-/*   Updated: 2024/11/10 21:59:04 by trouilla         ###   ########.fr       */
+/*   Updated: 2024/11/26 11:14:04 by trouilla         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ static int	ft_neg(int nb)
 	return (count);
 }
 
-int	ft_putnbr(int nb)
+int	ft_putnbr_printf(int nb)
 {
 	int	count;
 
