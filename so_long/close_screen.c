@@ -1,43 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   free.c                                             :+:      :+:    :+:   */
+/*   close_screen.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: trouilla <trouilla@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/11/25 14:12:14 by trouilla          #+#    #+#             */
-/*   Updated: 2024/11/28 14:02:05 by trouilla         ###   ########.fr       */
+/*   Created: 2024/11/28 15:19:06 by trouilla          #+#    #+#             */
+/*   Updated: 2024/11/28 15:20:59 by trouilla         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-int ft_free_array(char **str)
+int	ft_close(t_map *map)
 {
-	int	i;
-
-	i = 0;
-    if (str == NULL)
-        return (0);
-    while (str[i])
-    {
-        free(str[i]); 
-        i++;
-    }
-    free(str); 
-    return (0);
-}
-
-
-void	ft_exit_free(t_map *map)
-{
-	if (map->array)
-		free(map->array);
-	if (map->copy)
-		free(map->copy);
-	if (map->line)
-		free(map->line);
-	if (map->file)
-		free(map->file);
+	mlx_destroy_window(map->mlx, map->wnd);
+	ft_free_array(map->array);
 	exit(EXIT_FAILURE);
+	return (0);
 }
+

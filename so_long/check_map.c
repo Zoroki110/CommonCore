@@ -6,7 +6,7 @@
 /*   By: trouilla <trouilla@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/25 14:11:56 by trouilla          #+#    #+#             */
-/*   Updated: 2024/11/26 15:22:58 by trouilla         ###   ########.fr       */
+/*   Updated: 2024/11/28 14:13:20 by trouilla         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ static void	check_file(t_map *map)
 {
 	int	len;
 
-	len = ft_strlen(map->filename);
+	len = ft_strlen2(map->filename);
 	if (map->filename[len - 1] != 'r')
 		error_filename();
 	if (map->filename[len - 2] != 'e')
@@ -25,7 +25,7 @@ static void	check_file(t_map *map)
 		error_filename();
 	if (map->filename[len - 4] != '.')
 		error_filename();
-	if (!ft_strnstr(map->filename, ".ber", ft_strlen(map->filename)))
+	if (!ft_strnstr(map->filename, ".ber", ft_strlen2(map->filename)))
 		error_filename();
 }
 
@@ -37,16 +37,11 @@ static void	check_size(t_map *map)
 
 	y = 0;
 	x = 0;
-	max = ft_strlen(map->array[y]);
-	if (max == 0)
-	{
-		write (1, "error map\n", 10);
-		exit (EXIT_FAILURE);
-	}
+	max = ft_strlen2(map->array[y]);
 	while (y < map->y)
 	{
-		x = ft_strlen(map->array[y]);
-		if (max != x)
+		x = ft_strlen2(map->array[y]);
+		if (max != x || x == 0 || max == 0)
 			error_size(map);
 		y++;
 	}
@@ -63,7 +58,7 @@ static void	check_wall(t_map *map)
 		error_size(map);
 	while (x < map->x && map->array[0][x] == '1')
 		x++;
-	if (map->array[1][x] != '\0')
+	if (x != map->x)
 		error_wall(map);
 	y = 1;
 	while (y < map->y)
@@ -116,5 +111,5 @@ void	map_check(t_map *map)
 	check_wall(map);
 	check_pec(map);
 	check_path(map);
-	ft_free_array(map->copy, map->y);
+	ft_free_array(map->copy);
 }

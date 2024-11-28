@@ -6,21 +6,21 @@
 #    By: trouilla <trouilla@student.s19.be>         +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/11/25 14:17:06 by trouilla          #+#    #+#              #
-#    Updated: 2024/11/26 15:12:47 by trouilla         ###   ########.fr        #
+#    Updated: 2024/11/28 19:29:07 by trouilla         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 CC = cc
 
-CFLAGS = -c -Wall -Werror -Wextra -fsanitize=address -g3
+CFLAGS = -c -Wall -Werror -Wextra 
 
 LIBFT_DIR = Libft         
 LIBFT = -lft               
-MLX_FLAGS = -lmlx -framework OpenGL -framework Appkit -fsanitize=address -g3
+MLX_FLAGS = -lmlx -framework OpenGL -framework Appkit 
 
 NAME = so_long
 
-MY_SOURCES = check_map.c check_path.c error.c free.c generate_map.c key_move.c so_long.c
+MY_SOURCES = check_map.c check_path.c error.c free.c generate_map.c key_move.c so_long.c file_image.c close_screen.c map_print.c 
 MY_OBJECTS = $(MY_SOURCES:.c=.o)
 
 RM = rm -f

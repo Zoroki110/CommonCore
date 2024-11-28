@@ -1,43 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   free.c                                             :+:      :+:    :+:   */
+/*   move.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: trouilla <trouilla@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/11/25 14:12:14 by trouilla          #+#    #+#             */
-/*   Updated: 2024/11/28 14:02:05 by trouilla         ###   ########.fr       */
+/*   Created: 2024/11/28 19:55:00 by trouilla          #+#    #+#             */
+/*   Updated: 2024/11/28 20:19:11 by trouilla         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-int ft_free_array(char **str)
+static void move_utils(t_map *map, int x, int y, int key)
 {
-	int	i;
-
-	i = 0;
-    if (str == NULL)
-        return (0);
-    while (str[i])
-    {
-        free(str[i]); 
-        i++;
-    }
-    free(str); 
-    return (0);
+    if (key -> + 1 ou <- - 1 ou down + 1 ou up + 1)
+    if 
+    if
+    if
+    if (array == E && collectible == 0)
+            ft_win
+    if (array == C)
+        array == 0
+        c--
 }
 
-
-void	ft_exit_free(t_map *map)
+void up(t_map *map)
 {
-	if (map->array)
-		free(map->array);
-	if (map->copy)
-		free(map->copy);
-	if (map->line)
-		free(map->line);
-	if (map->file)
-		free(map->file);
-	exit(EXIT_FAILURE);
+    
 }

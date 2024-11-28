@@ -6,7 +6,7 @@
 /*   By: trouilla <trouilla@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/29 21:33:42 by trouilla          #+#    #+#             */
-/*   Updated: 2024/11/26 11:43:01 by trouilla         ###   ########.fr       */
+/*   Updated: 2024/11/28 09:46:01 by trouilla         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@
 # include <fcntl.h>
 
 # ifndef BUFFER_SIZE
-#  define BUFFER_SIZE 7 
+#  define BUFFER_SIZE 1 
 # endif
 
 char		*get_next_line(int fd);
