@@ -6,7 +6,7 @@
 /*   By: trouilla <trouilla@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/11 18:16:56 by trouilla          #+#    #+#             */
-/*   Updated: 2024/11/28 19:54:35 by trouilla         ###   ########.fr       */
+/*   Updated: 2024/11/30 09:33:52 by trouilla         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,7 +88,7 @@ void			map_init(t_map *map, char **av);
 int				ft_free_array(char **str);
 void			ft_exit_free(t_map *map);
 
-void			found_player(t_map *map);
+int				found_player(t_map *map);
 int				key_move(int key, t_map *map);
 
 int				move_on_path(int x, int y, t_map *map);
@@ -99,5 +99,11 @@ void    		file_to_image(t_map *map);
 
 void    		map_printer(t_map *map);
 int				ft_close(t_map *map);
+void			ft_victory(t_map *map);
+
+int				go_right(t_map *map);
+int				go_left(t_map *map);
+int				go_up(t_map *map);
+int				go_down(t_map *map);
 
 #endif

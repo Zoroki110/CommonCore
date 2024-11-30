@@ -6,7 +6,7 @@
 /*   By: trouilla <trouilla@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/25 14:11:56 by trouilla          #+#    #+#             */
-/*   Updated: 2024/11/28 14:13:20 by trouilla         ###   ########.fr       */
+/*   Updated: 2024/11/30 12:25:57 by trouilla         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,12 +50,35 @@ static void	check_size(t_map *map)
 
 static void	check_wall(t_map *map)
 {
-	int	y;
+	int y;
+    int x;
+
+    if (map->array[0] == NULL)
+        error_size(map);
+    x = 0;
+    while (x < map->x && map->array[0][x] == '1')
+        x++;
+    if (x != map->x)  
+        error_wall(map);
+    y = 1;
+    while (y < map->y)
+    {
+        if (map->array[y] == NULL || map->array[y][0] != '1' || map->array[y][map->x - 1] != '1')
+            error_wall(map);
+        y++;
+    }
+    x = 0;
+    while (map->array[map->y - 1][x] == '1')
+		x++;
+    if (map->array[map->y - 1][x] != '\0') 
+        error_wall(map);
+}
+	/* int	y;
 	int	x;
 
-	x = 0;
 	if (map->array[0] == NULL)
 		error_size(map);
+	x = 0;
 	while (x < map->x && map->array[0][x] == '1')
 		x++;
 	if (x != map->x)
@@ -71,8 +94,7 @@ static void	check_wall(t_map *map)
 	while (map->array[map->y - 1][x] == '1')
 		x++;
 	if (map->array[map->y - 1][x] != '\0')
-		error_wall(map);
-}
+		error_wall(map); */
 
 static void	check_pec(t_map *map)
 {
@@ -82,6 +104,7 @@ static void	check_pec(t_map *map)
 	y = 0;
 	while (y < map->y)
 	{
+		x = 0;
 		while (x < map->x)
 		{
 			if (map->array[y][x] == 'P')
@@ -96,7 +119,6 @@ static void	check_pec(t_map *map)
 				error_pec(map);
 			x++;
 		}
-		x = 0;
 		y++;
 	}
 	if (map->p != 1 || map->e != 1 || map->c < 1)
