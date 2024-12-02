@@ -6,7 +6,7 @@
 /*   By: trouilla <trouilla@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/25 14:11:56 by trouilla          #+#    #+#             */
-/*   Updated: 2024/12/02 15:09:40 by trouilla         ###   ########.fr       */
+/*   Updated: 2024/12/02 20:03:19 by trouilla         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,7 @@ static void	check_file(t_map *map)
 	if (!ft_strnstr(map->filename, ".ber", ft_strlen2(map->filename)))
 		error_filename();
 }
+
 static void	check_size(t_map *map)
 {
 	int	y;
@@ -46,31 +47,34 @@ static void	check_size(t_map *map)
 	}
 	map->x = max;
 }
+
 static void	check_wall(t_map *map)
 {
-	int y;
-    int x;
+	int	y;
+	int	x;
 
-    if (map->array[0] == NULL)
-        error_size(map);
-    x = 0;
-    while (x < map->x && map->array[0][x] == '1')
-        x++;
-    if (x != map->x)  
-        error_wall(map);
-    y = 1;
-    while (y < map->y)
-    {
-        if (map->array[y] == NULL || map->array[y][0] != '1' || map->array[y][map->x - 1] != '1')
-            error_wall(map);
-        y++;
-    }
-    x = 0;
-    while (map->array[map->y - 1][x] == '1')
+	if (map->array[0] == NULL)
+		error_size(map);
+	x = 0;
+	while (x < map->x && map->array[0][x] == '1')
 		x++;
-    if (map->array[map->y - 1][x] != '\0') 
-        error_wall(map);
+	if (x != map->x)
+		error_wall(map);
+	y = 1;
+	while (y < map->y)
+	{
+		if (map->array[y] == NULL || map->array[y][0] != '1'
+			|| map->array[y][map->x - 1] != '1')
+			error_wall(map);
+		y++;
+	}
+	x = 0;
+	while (map->array[map->y - 1][x] == '1')
+		x++;
+	if (map->array[map->y - 1][x] != '\0')
+		error_wall(map);
 }
+
 static void	check_pec(t_map *map)
 {
 	int	y;

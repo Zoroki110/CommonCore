@@ -6,7 +6,7 @@
 /*   By: trouilla <trouilla@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/11 18:16:56 by trouilla          #+#    #+#             */
-/*   Updated: 2024/12/02 13:26:47 by trouilla         ###   ########.fr       */
+/*   Updated: 2024/12/02 20:17:28 by trouilla         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -98,10 +98,10 @@ int				key_move(int key, t_map *map);
 int				move_on_path(int x, int y, t_map *map);
 void			check_path(t_map *map);
 
-void    		file_image_player(t_map *map);
-void    		file_to_image(t_map *map);
+void			file_image_player(t_map *map);
+void			file_to_image(t_map *map);
 
-void    		map_printer(t_map *map);
+void			map_printer(t_map *map);
 int				ft_close(t_map *map);
 void			ft_victory(t_map *map);
 
@@ -109,5 +109,9 @@ int				go_right(t_map *map);
 int				go_left(t_map *map);
 int				go_up(t_map *map);
 int				go_down(t_map *map);
+void			move_check1(t_map *map, int x, int y, int key);
+void			move_check2(t_map *map, int x, int y, int key2);
+
+void			print_move(t_map *map);
 
 #endif

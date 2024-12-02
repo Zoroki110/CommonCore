@@ -6,7 +6,7 @@
 /*   By: trouilla <trouilla@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/25 14:12:29 by trouilla          #+#    #+#             */
-/*   Updated: 2024/12/02 14:05:34 by trouilla         ###   ########.fr       */
+/*   Updated: 2024/12/02 20:17:12 by trouilla         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,13 +31,14 @@ void	map_init(t_map *map, char **av)
 int	main(int ac, char **av)
 {
 	t_map	map;
-	
+
 	if (ac == 2)
 	{
 		map_init(&map, av);
 		map_check(&map);
 		map.mlx = mlx_init();
-		map.wnd = mlx_new_window(map.mlx, map.x * IMG_PXL, map.y * IMG_PXL, WND_NAME);
+		map.wnd = mlx_new_window(map.mlx, map.x * IMG_PXL, map.y * IMG_PXL,
+				WND_NAME);
 		file_to_image(&map);
 		map_printer(&map);
 		mlx_hook(map.wnd, 17, 0, ft_close, &map);

@@ -6,28 +6,27 @@
 /*   By: trouilla <trouilla@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/25 14:12:14 by trouilla          #+#    #+#             */
-/*   Updated: 2024/11/28 14:02:05 by trouilla         ###   ########.fr       */
+/*   Updated: 2024/12/02 20:05:15 by trouilla         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-int ft_free_array(char **str)
+int	ft_free_array(char **str)
 {
 	int	i;
 
 	i = 0;
-    if (str == NULL)
-        return (0);
-    while (str[i])
-    {
-        free(str[i]); 
-        i++;
-    }
-    free(str); 
-    return (0);
+	if (str == NULL)
+		return (0);
+	while (str[i])
+	{
+		free(str[i]);
+		i++;
+	}
+	free(str);
+	return (0);
 }
-
 
 void	ft_exit_free(t_map *map)
 {

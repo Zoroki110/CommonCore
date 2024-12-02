@@ -6,17 +6,17 @@
 #    By: trouilla <trouilla@student.s19.be>         +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/11/25 14:17:06 by trouilla          #+#    #+#              #
-#    Updated: 2024/11/30 12:06:59 by trouilla         ###   ########.fr        #
+#    Updated: 2024/12/02 19:35:16 by trouilla         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 CC = cc
 
-CFLAGS = -c -Wall -Werror -Wextra -fsanitize=address -g3
+CFLAGS = -c -Wall -Werror -Wextra
 
 LIBFT_DIR = Libft         
 LIBFT = -lft               
-MLX_FLAGS = -lmlx -framework OpenGL -framework Appkit -fsanitize=address -g3
+MLX_FLAGS = -lmlx -framework OpenGL -framework Appkit
 
 NAME = so_long
 
