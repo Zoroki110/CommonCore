@@ -6,7 +6,7 @@
 /*   By: trouilla <trouilla@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/25 17:00:25 by trouilla          #+#    #+#             */
-/*   Updated: 2024/11/30 09:31:24 by trouilla         ###   ########.fr       */
+/*   Updated: 2024/12/02 13:29:00 by trouilla         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,13 +38,13 @@ int	key_move(int key, t_map *map)
 		return (ft_close(map));
 	else if (map->exit == 1)
 		return (0);
-	else if (key == UP)
+	else if (key == UP || key == W)
 		go_up(map);
-	else if (key == DOWN)
+	else if (key == DOWN || key == S)
 		go_down(map);
-	else if (key == RIGHT)
+	else if (key == RIGHT || key == D)
 		go_right(map);
-	else if (key == LEFT)
+	else if (key == LEFT || key == A)
 		go_left(map);
 	else
 		return (0);

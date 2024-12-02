@@ -6,7 +6,7 @@
 /*   By: trouilla <trouilla@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/11 18:16:56 by trouilla          #+#    #+#             */
-/*   Updated: 2024/11/30 09:33:52 by trouilla         ###   ########.fr       */
+/*   Updated: 2024/12/02 13:26:47 by trouilla         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,10 +22,14 @@
 # include "Libft/include/libft.h"
 /*# include <X11/keysym.h>*/
 
-# define UP 13
-# define DOWN 1
-# define RIGHT 2
-# define LEFT 0
+# define UP 126
+# define DOWN 125
+# define RIGHT 124
+# define LEFT 123
+# define W 13
+# define S 1
+# define D 2
+# define A 0
 # define ESC 53
 # define IMG_PXL 64
 # define WND_NAME "so_long"

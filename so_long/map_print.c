@@ -6,7 +6,7 @@
 /*   By: trouilla <trouilla@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/28 14:59:22 by trouilla          #+#    #+#             */
-/*   Updated: 2024/11/30 12:09:06 by trouilla         ###   ########.fr       */
+/*   Updated: 2024/12/02 15:21:00 by trouilla         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,10 +32,10 @@ void    map_printer(t_map *map)
     int x;
     int y;
 
-    x = 0;
     y = 0;
     while (y < map->y)
     {
+        x = 0;
         while (x < map->x)
         {
             mlx_put_image_to_window(map->mlx, map->wnd,
@@ -43,7 +43,6 @@ void    map_printer(t_map *map)
             put_to_print(map, x * IMG_PXL, y * IMG_PXL);
             x++;
         }
-        x = 0;
         y++;
     }
 }
