@@ -6,11 +6,11 @@
 /*   By: trouilla <trouilla@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/25 16:41:45 by trouilla          #+#    #+#             */
-/*   Updated: 2024/12/02 20:03:31 by trouilla         ###   ########.fr       */
+/*   Updated: 2024/12/04 11:12:29 by trouilla         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "so_long.h"
+#include "../include/so_long.h"
 
 int	move_on_path(int x, int y, t_map *map)
 {
@@ -20,7 +20,7 @@ int	move_on_path(int x, int y, t_map *map)
 	if (box == 'E')
 	{
 		map->check_e = 1;
-		map->copy[y][x] = '1';
+		map->copy[y][x] = '0';
 	}
 	if (x < 0 || y < 0 || x >= map->x || y >= map->y || map->copy[y][x] == '1'
 		|| map->copy[y][x] == 'V')
@@ -40,7 +40,7 @@ int	move_on_path(int x, int y, t_map *map)
 void	check_path(t_map *map)
 {
 	map->check_c = map->c;
-	map->check_e = map->e;
+	map->check_e = 0;
 	found_player(map);
 	if (move_on_path(map->player.x, map->player.y, map) == 0)
 	{

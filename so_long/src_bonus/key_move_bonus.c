@@ -1,16 +1,36 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   key_move.c                                         :+:      :+:    :+:   */
+/*   key_move_bonus.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: trouilla <trouilla@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/11/25 17:00:25 by trouilla          #+#    #+#             */
-/*   Updated: 2024/12/02 20:15:56 by trouilla         ###   ########.fr       */
+/*   Created: 2024/12/03 09:06:21 by trouilla          #+#    #+#             */
+/*   Updated: 2024/12/04 13:39:52 by trouilla         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "so_long.h"
+#include "so_long_bonus.h"
+
+int	found_exit(t_map *map)
+{
+	map->t.y = 0;
+	map->t.x = 0;
+	while (map->t.y < map->y)
+	{
+		while (map->t.x < map->x)
+		{
+			if (map->array[map->t.y][map->t.x] == 'E')
+				break ;
+			map->t.x++;
+		}
+		if (map->array[map->t.y][map->t.x] == 'E')
+			break ;
+		map->t.x = 0;
+		map->t.y++;
+	}
+	return (0);
+}
 
 int	found_player(t_map *map)
 {
@@ -63,17 +83,17 @@ int	go_right(t_map *map)
 	{
 		move_check1(map, x, y, RIGHT);
 		move_check2(map, x, y, D);
-		if (map->array[y][x + 1] == 'E' && (map->c != 0 || map->exit == 1))
-			return (write(1, "Reste des Collectibles\n", 23));
 		map->move++;
-		mlx_put_image_to_window(map->mlx, map->wnd, map->img.empty, x * IMG_PXL,
-			y * IMG_PXL);
+		if (map->array[y][x] == map->array[map->t.y][map->t.x])
+			ee(map, x, y);
+		else
+			mlx_put_image_to_window(map->mlx, map->wnd, map->img.empty, x
+				* IMG_PXL, y * IMG_PXL);
 		map->array[y][x] = '0';
 		x++;
-		mlx_put_image_to_window(map->mlx, map->wnd, map->img.empty, x * IMG_PXL,
-			y * IMG_PXL);
-		mlx_put_image_to_window(map->mlx, map->wnd, map->img.player_right1, x
-			* IMG_PXL, y * IMG_PXL);
+		eeee_r(map, x, y);
+		if (map->array[map->t.y][map->t.x] != 'E' && map->array[y][x] != 'P')
+			map->array[map->t.y][map->t.x] = 'E';
 		map->array[y][x] = 'P';
 		print_move(map);
 	}

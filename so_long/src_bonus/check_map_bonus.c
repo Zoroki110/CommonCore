@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   check_map.c                                        :+:      :+:    :+:   */
+/*   check_map_bonus.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: trouilla <trouilla@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/11/25 14:11:56 by trouilla          #+#    #+#             */
-/*   Updated: 2024/12/02 20:03:19 by trouilla         ###   ########.fr       */
+/*   Created: 2024/12/03 09:04:53 by trouilla          #+#    #+#             */
+/*   Updated: 2024/12/04 13:32:19 by trouilla         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "so_long.h"
+#include "../include/so_long_bonus.h"
 
 static void	check_file(t_map *map)
 {
@@ -80,11 +80,11 @@ static void	check_pec(t_map *map)
 	int	y;
 	int	x;
 
-	y = 0;
-	while (y < map->y)
+	y = -1;
+	while (++y < map->y)
 	{
-		x = 0;
-		while (x < map->x)
+		x = -1;
+		while (++x < map->x)
 		{
 			if (map->array[y][x] == 'P')
 				map->p += 1;
@@ -92,15 +92,15 @@ static void	check_pec(t_map *map)
 				map->e += 1;
 			else if (map->array[y][x] == 'C')
 				map->c += 1;
+			else if (map->array[y][x] == 'D')
+				map->d += 1;
 			else if (map->array[y][x] == '0' || map->array[y][x] == '1')
 				;
 			else
 				error_pec(map);
-			x++;
 		}
-		y++;
 	}
-	if (map->p != 1 || map->e != 1 || map->c < 1)
+	if (map->p != 1 || map->e != 1 || map->c < 1 || map->d < 1)
 		error_pec(map);
 }
 

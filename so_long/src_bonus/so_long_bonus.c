@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   so_long.c                                          :+:      :+:    :+:   */
+/*   so_long_bonus.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: trouilla <trouilla@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/11/25 14:12:29 by trouilla          #+#    #+#             */
-/*   Updated: 2024/12/02 20:17:12 by trouilla         ###   ########.fr       */
+/*   Created: 2024/12/03 09:07:03 by trouilla          #+#    #+#             */
+/*   Updated: 2024/12/04 11:46:49 by trouilla         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "so_long.h"
+#include "../include/so_long_bonus.h"
 
 void	map_init(t_map *map, char **av)
 {
@@ -22,6 +22,7 @@ void	map_init(t_map *map, char **av)
 	map->c = 0;
 	map->p = 0;
 	map->e = 0;
+	map->d = 0;
 	map->exit = 0;
 	map->move = 0;
 	map->check_c = 0;
@@ -39,6 +40,7 @@ int	main(int ac, char **av)
 		map.mlx = mlx_init();
 		map.wnd = mlx_new_window(map.mlx, map.x * IMG_PXL, map.y * IMG_PXL,
 				WND_NAME);
+		found_exit(&map);
 		file_to_image(&map);
 		map_printer(&map);
 		mlx_hook(map.wnd, 17, 0, ft_close, &map);

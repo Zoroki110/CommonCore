@@ -6,11 +6,11 @@
 /*   By: trouilla <trouilla@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/25 14:12:21 by trouilla          #+#    #+#             */
-/*   Updated: 2024/12/02 20:06:16 by trouilla         ###   ########.fr       */
+/*   Updated: 2024/12/05 18:21:04 by trouilla         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "so_long.h"
+#include "../include/so_long.h"
 
 void	ft_line_map(t_map *map)
 {
@@ -29,6 +29,8 @@ void	ft_line_map(t_map *map)
 		if (map->line == NULL)
 			break ;
 		tmp = ft_strjoin(map->file, map->line);
+		if (!tmp)
+			return ;
 		free(map->file);
 		map->file = tmp;
 		free(map->line);

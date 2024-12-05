@@ -6,11 +6,11 @@
 /*   By: trouilla <trouilla@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/28 14:59:22 by trouilla          #+#    #+#             */
-/*   Updated: 2024/12/02 20:07:49 by trouilla         ###   ########.fr       */
+/*   Updated: 2024/12/03 09:22:40 by trouilla         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "so_long.h"
+#include "../include/so_long.h"
 
 static void	put_to_print(t_map *map, int x, int y)
 {

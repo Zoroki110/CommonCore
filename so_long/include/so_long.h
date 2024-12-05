@@ -6,7 +6,7 @@
 /*   By: trouilla <trouilla@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/11 18:16:56 by trouilla          #+#    #+#             */
-/*   Updated: 2024/12/02 20:17:28 by trouilla         ###   ########.fr       */
+/*   Updated: 2024/12/04 13:36:58 by trouilla         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,9 +17,9 @@
 # include <mlx.h>
 # include <unistd.h>
 /*# include <X11/X.h>*/
-# include "Libft/include/ft_printf.h"
-# include "Libft/include/get_next_line.h"
-# include "Libft/include/libft.h"
+# include "../Libft/include/ft_printf.h"
+# include "../Libft/include/get_next_line.h"
+# include "../Libft/include/libft.h"
 /*# include <X11/keysym.h>*/
 
 # define UP 126
@@ -39,6 +39,12 @@ typedef struct s_player
 	int			y;
 	int			x;
 }				t_player;
+
+typedef struct s_exit
+{
+	int			y;
+	int			x;
+}				t_exit;
 
 typedef struct s_image
 {
@@ -74,7 +80,13 @@ typedef struct s_map
 	void		*wnd;
 	t_image		img;
 	t_player	player;
+	t_exit		t;
 }				t_map;
+
+int				found_exit(t_map *map);
+void			ee(t_map *map, int x, int y);
+void			eee(t_map *map, int x, int y);
+void			eeee(t_map *map, int x, int y);
 
 void			error_filename(void);
 void			error_open(void);
@@ -105,10 +117,17 @@ void			map_printer(t_map *map);
 int				ft_close(t_map *map);
 void			ft_victory(t_map *map);
 
-int				go_right(t_map *map);
+void			update_map(t_map *map, int x, int y);
+void			move_player_right(t_map *map, int x, int y);
+void			move_player_left(t_map *map, int x, int y);
+void			move_player_down(t_map *map, int x, int y);
+void			move_player_up(t_map *map, int x, int y);
+
 int				go_left(t_map *map);
+int				go_right(t_map *map);
 int				go_up(t_map *map);
 int				go_down(t_map *map);
+
 void			move_check1(t_map *map, int x, int y, int key);
 void			move_check2(t_map *map, int x, int y, int key2);
 
