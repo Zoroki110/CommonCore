@@ -6,7 +6,7 @@
 /*   By: trouilla <trouilla@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/06 10:58:43 by trouilla          #+#    #+#             */
-/*   Updated: 2024/12/08 13:21:38 by trouilla         ###   ########.fr       */
+/*   Updated: 2024/12/08 13:52:01 by trouilla         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,5 +36,10 @@ void    pb(t_stack_node **b, t_stack_node **a, bool done);
 void    ra(t_stack_node **a, bool show);
 void    rb(t_stack_node **b, bool show);
 void    rr(t_stack_node **a, t_stack_node **b, bool show);
+void 	rra(t_stack_node **a, bool show);
+void 	rrb(t_stack_node **b, bool show);
+void	rrr(t_stack_node **a, t_stack_node **b, bool show);
+
+t_stack_node	*ft_last_node(t_stack_node *stack);
 
 #endif
