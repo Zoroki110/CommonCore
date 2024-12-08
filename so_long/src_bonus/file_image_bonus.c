@@ -6,7 +6,7 @@
 /*   By: trouilla <trouilla@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/03 09:05:41 by trouilla          #+#    #+#             */
-/*   Updated: 2024/12/04 13:35:26 by trouilla         ###   ########.fr       */
+/*   Updated: 2024/12/06 14:10:07 by trouilla         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,9 @@ void	file_to_image(t_map *map)
 			&img, &img);
 	map->img.collectible = mlx_xpm_file_to_image(map->mlx,
 			"assets/Potion_collectible.xpm", &img, &img);
+	if (!map->img.empty || !map->img.collectible 
+			|| !map->img.exit || !map->img.wall)
+		return ;
 	file_image_player(map);
 	file_image_enemy(map);
 }
