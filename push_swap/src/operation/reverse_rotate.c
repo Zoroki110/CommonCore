@@ -6,11 +6,11 @@
 /*   By: trouilla <trouilla@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/08 13:33:58 by trouilla          #+#    #+#             */
-/*   Updated: 2024/12/08 13:51:15 by trouilla         ###   ########.fr       */
+/*   Updated: 2024/12/09 11:09:41 by trouilla         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/push_swap.h"
+#include "../../includes/push_swap.h"
 
 static void reverse_rotate(t_stack_node **stack)
 {
@@ -44,8 +44,8 @@ void rrb(t_stack_node **b, bool show)
 
 void	rrr(t_stack_node **a, t_stack_node **b, bool show)
 {
-	rev_rotate(a);
-	rev_rotate(b);
+	reverse_rotate(a);
+	reverse_rotate(b);
 	if (show)
 		ft_printf("rrr\n");
 }

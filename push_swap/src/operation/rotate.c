@@ -6,11 +6,11 @@
 /*   By: trouilla <trouilla@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/08 13:03:49 by trouilla          #+#    #+#             */
-/*   Updated: 2024/12/08 13:48:48 by trouilla         ###   ########.fr       */
+/*   Updated: 2024/12/09 11:09:05 by trouilla         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/push_swap.h"
+#include "../../includes/push_swap.h"
 
 static void rotate(t_stack_node **stack)
 {

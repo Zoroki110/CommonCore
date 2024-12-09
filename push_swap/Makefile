@@ -6,7 +6,7 @@
 #    By: trouilla <trouilla@student.s19.be>         +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/12/06 10:58:46 by trouilla          #+#    #+#              #
-#    Updated: 2024/12/08 09:26:21 by trouilla         ###   ########.fr        #
+#    Updated: 2024/12/09 11:08:43 by trouilla         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -20,7 +20,10 @@ CC = gcc
 CFLAGS = -Wextra -Wall -Werror -I
 RM = rm -f
 
-SRC = $(SRC_DIR)push_swap.c
+SRC = $(SRC_DIR)operation/push.c $(SRC_DIR)operation/reverse_rotate.c \
+		$(SRC_DIR)operation/rotate.c $(SRC_DIR)operation/swap.c \
+		$(SRC_DIR)push_swap.c
+				
 
 OBJ = $(patsubst $(SRC_DIR)%.c, $(OBJ_DIR)%.o, $(SRC))
 

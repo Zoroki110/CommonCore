@@ -6,7 +6,7 @@
 /*   By: trouilla <trouilla@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/06 10:58:43 by trouilla          #+#    #+#             */
-/*   Updated: 2024/12/08 13:52:01 by trouilla         ###   ########.fr       */
+/*   Updated: 2024/12/09 11:20:55 by trouilla         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,9 @@ typedef struct s_stack_node
 	struct s_stack_node *prev;
 }	t_stack_node;
 
+void    sa(t_stack_node **a, bool show);
+void    sb(t_stack_node **b, bool show);
+void    ss(t_stack_node **a, t_stack_node **b, bool show);
 void    pa(t_stack_node **a, t_stack_node **b, bool done);
 void    pb(t_stack_node **b, t_stack_node **a, bool done);
 void    ra(t_stack_node **a, bool show);
@@ -41,5 +44,9 @@ void 	rrb(t_stack_node **b, bool show);
 void	rrr(t_stack_node **a, t_stack_node **b, bool show);
 
 t_stack_node	*ft_last_node(t_stack_node *stack);
+t_stack_node	*min_stack(t_stack_node *stack);
+t_stack_node	*max_stack(t_stack_node *stack);
+int				stack_size(t_stack_node *stack);
+bool			is_stack_sorted(t_stack_node *stack);
 
 #endif

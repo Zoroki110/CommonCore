@@ -6,11 +6,11 @@
 /*   By: trouilla <trouilla@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/08 12:51:19 by trouilla          #+#    #+#             */
-/*   Updated: 2024/12/08 13:09:26 by trouilla         ###   ########.fr       */
+/*   Updated: 2024/12/09 11:08:57 by trouilla         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/push_swap.h"
+#include "../../includes/push_swap.h"
 
 static void push(t_stack_node ** dest, t_stack_node **src)
 {
