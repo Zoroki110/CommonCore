@@ -6,11 +6,11 @@
 /*   By: trouilla <trouilla@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/04 17:10:57 by trouilla          #+#    #+#             */
-/*   Updated: 2024/11/28 09:52:45 by trouilla         ###   ########.fr       */
+/*   Updated: 2024/12/09 08:38:28 by trouilla         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "get_next_line.h"
+#include "../../include/get_next_line.h"
 
 static char	*fill_stash(int fd, char *stash)
 {
