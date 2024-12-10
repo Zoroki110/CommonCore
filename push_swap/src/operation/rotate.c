@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   rotate.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: trouilla <trouilla@student.s19.be>         +#+  +:+       +#+        */
+/*   By: toikirouillard <toikirouillard@student.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/08 13:03:49 by trouilla          #+#    #+#             */
-/*   Updated: 2024/12/09 11:09:05 by trouilla         ###   ########.fr       */
+/*   Updated: 2024/12/10 22:36:44 by toikirouill      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,18 +14,16 @@
 
 static void rotate(t_stack_node **stack)
 {
-    t_stack_node *first_node;
-    t_stack_node *last_node;
-    
-    if (!*stack || !(*stack)->next)
-        return ;
-    first_node = *stack;
-    last_node = ft_last_node(*stack);
-    *stack = first_node->next;
-    (*stack)->prev = NULL;
-    first_node->next = NULL;
-    first_node->prev = last_node;
-    last_node->next = first_node;
+    t_stack_node	*last_node;
+
+	if (!*stack || !(*stack)->next)
+		return ;
+	last_node = get_last_node(*stack);
+	last_node->next = *stack;
+	*stack = (*stack)->next;
+	(*stack)->prev = NULL;
+	last_node->next->prev = last_node;
+	last_node->next->next = NULL;
 }
 
 void    ra(t_stack_node **a, bool show)

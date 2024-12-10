@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: trouilla <trouilla@student.s19.be>         +#+  +:+       +#+        */
+/*   By: toikirouillard <toikirouillard@student.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/06 10:58:39 by trouilla          #+#    #+#             */
-/*   Updated: 2024/12/09 11:25:45 by trouilla         ###   ########.fr       */
+/*   Updated: 2024/12/10 22:14:37 by toikirouill      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/push_swap.h"
+#include "includes/push_swap.h"
 
 /*
 void print_stack(t_stack_node *stack)
@@ -42,5 +42,17 @@ int main(int ac, char **av)
 	if (ac == 1 || (ac == 2 && !av[1][0]))
 		return (1);
 	else if (ac == 2)
-		
+		av = split(av[1], ' ');
+    define_stack_a(&a, av + 1);
+    if (!is_stack_sorted(a))
+    {
+        if (stack_size(a) == 2)
+            sa(&a, true);
+        else if (stack_size(a) == 3)
+            sort_three(&a);
+        else
+            sort_stack(&a, &b);
+    }
+    ft_free_stack(&a);
+    return (0);
 }

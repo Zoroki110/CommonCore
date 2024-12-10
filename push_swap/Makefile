@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: trouilla <trouilla@student.s19.be>         +#+  +:+       +#+         #
+#    By: toikirouillard <toikirouillard@student.    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/12/06 10:58:46 by trouilla          #+#    #+#              #
-#    Updated: 2024/12/09 11:08:43 by trouilla         ###   ########.fr        #
+#    Updated: 2024/12/10 22:27:38 by toikirouill      ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -21,8 +21,10 @@ CFLAGS = -Wextra -Wall -Werror -I
 RM = rm -f
 
 SRC = $(SRC_DIR)operation/push.c $(SRC_DIR)operation/reverse_rotate.c \
-		$(SRC_DIR)operation/rotate.c $(SRC_DIR)operation/swap.c \
-		$(SRC_DIR)push_swap.c
+		$(SRC_DIR)operation/rotate.c $(SRC_DIR)operation/swap.c $(SRC_DIR)operation/sort_stack.c \
+		$(SRC_DIR)operation/sort_three.c push_swap.c error.c \
+		push_swap_utils.c split_push_swap.c stack_define.c \
+		value_a_to_b.c value_b_to_a.c
 				
 
 OBJ = $(patsubst $(SRC_DIR)%.c, $(OBJ_DIR)%.o, $(SRC))
@@ -70,4 +72,4 @@ fclean: 			clean
 
 re: 				fclean all
 
-.PHONY: 			start all clean fclean re logo
+.PHONY: start all clean fclean re logo

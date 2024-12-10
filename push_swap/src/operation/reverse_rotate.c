@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   reverse_rotate.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: trouilla <trouilla@student.s19.be>         +#+  +:+       +#+        */
+/*   By: toikirouillard <toikirouillard@student.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/08 13:33:58 by trouilla          #+#    #+#             */
-/*   Updated: 2024/12/09 11:09:41 by trouilla         ###   ########.fr       */
+/*   Updated: 2024/12/10 22:36:25 by toikirouill      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,18 +14,16 @@
 
 static void reverse_rotate(t_stack_node **stack)
 {
-    t_stack_node *last_node;
-    t_stack_node *second_last_node;
+    t_stack_node	*last;
 
-    if (!*stack || !(*stack)->next)
-        return ;
-    last_node = ft_last_node(*stack);
-    second_last_node = last_node->prev;
-    second_last_node->next = NULL;
-    last_node->prev = NULL;
-    last_node->next = (*stack);
-    (*stack)->prev = last_node;
-    *stack = last_node;
+	if (!*stack || !(*stack)->next)
+		return ;
+	last = get_last_node(*stack);
+	last->prev->next = NULL;
+	last->next = *stack;
+	last->prev = NULL;
+	*stack = last;
+	last->next->prev = last;
 }
 
 void rra(t_stack_node **a, bool show)
