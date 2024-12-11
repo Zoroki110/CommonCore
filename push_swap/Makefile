@@ -3,39 +3,42 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: toikirouillard <toikirouillard@student.    +#+  +:+       +#+         #
+#    By: trouilla <trouilla@student.s19.be>         +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/12/06 10:58:46 by trouilla          #+#    #+#              #
-#    Updated: 2024/12/10 22:27:38 by toikirouill      ###   ########.fr        #
+#    Updated: 2024/12/11 11:12:58 by trouilla         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = push_swap
 
-LIBFT = ./libft/libft.a
-INC = inc/
-SRC_DIR = src/
-OBJ_DIR = obj/
-CC = gcc
-CFLAGS = -Wextra -Wall -Werror -I
-RM = rm -f
+LIBFT				= ./libft/libft.a
+SRC_DIR				= srcs/
+OBJ_DIR				= obj/
 
-SRC = $(SRC_DIR)operation/push.c $(SRC_DIR)operation/reverse_rotate.c \
-		$(SRC_DIR)operation/rotate.c $(SRC_DIR)operation/swap.c $(SRC_DIR)operation/sort_stack.c \
-		$(SRC_DIR)operation/sort_three.c push_swap.c error.c \
-		push_swap_utils.c split_push_swap.c stack_define.c \
-		value_a_to_b.c value_b_to_a.c
+CC					= gcc
+CFLAGS				= -Wall -Werror -Wextra
+RM					= rm -f
+
+SRCS = $(SRC_DIR)push.c $(SRC_DIR)reverse_rotate.c \
+		$(SRC_DIR)rotate.c $(SRC_DIR)swap.c $(SRC_DIR)sort_stack.c \
+		$(SRC_DIR)sort_three.c $(SRC_DIR)push_swap.c $(SRC_DIR)error.c \
+		$(SRC_DIR)push_swap_utils.c $(SRC_DIR)split_push_swap.c $(SRC_DIR)stack_define.c \
+		$(SRC_DIR)value_a_to_b.c $(SRC_DIR)value_b_to_a.c
 				
 
-OBJ = $(patsubst $(SRC_DIR)%.c, $(OBJ_DIR)%.o, $(SRC))
+
+OBJ 				= $(patsubst $(SRC_DIR)%.c,$(OBJ_DIR)%.o,$(SRCS))
 
 start:
-		@make all
+					@make all
 
 $(LIBFT):
-		@make -C ./libft
+					@make -C ./libft
 
-logo : 		
+all: 				logo $(NAME)
+
+logo:
 	@printf "\033[1;32m              :::::::::  :::    :::  ::::::::   :::    :::    \n"
 	@printf "\033[1;35m             :+:    :+: :+:    :+:  :+:    :+: :+:    :+:    \n"	
 	@printf "\033[1;32m            +:+    +:+ +:+    +:+  +:+        +:+    +:+    \n"
@@ -53,14 +56,12 @@ logo :
 	@printf "\033[1;32m   ########     ###   ###   ###     ### ###          \n"
 	@printf "\033[1;35m \n"
 	
-all : logo $(NAME)
-
-$(NAME): 		$(OBJ) $(LIBFT)
-					@$(CC) $(CFLAGS) $(INC) $(OBJ) $(LIBFT) -o $(NAME)
+$(NAME): 			$(OBJ) $(LIBFT)
+					@$(CC) $(CFLAGS) $(OBJ) $(LIBFT) -o $(NAME)
 
 $(OBJ_DIR)%.o:		$(SRC_DIR)%.c
 					@mkdir -p $(@D)
-					@$(CC) $(CFLAGS) $(INC) -c $< -o $@
+					@$(CC) $(CFLAGS) -c $< -o $@
 
 clean:
 					@$(RM) -r $(OBJ_DIR)
@@ -72,4 +73,4 @@ fclean: 			clean
 
 re: 				fclean all
 
-.PHONY: start all clean fclean re logo
+.PHONY: 			start all clean fclean re logo

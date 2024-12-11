@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap_utils.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: toikirouillard <toikirouillard@student.    +#+  +:+       +#+        */
+/*   By: trouilla <trouilla@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/08 13:47:20 by trouilla          #+#    #+#             */
-/*   Updated: 2024/12/10 22:16:28 by toikirouill      ###   ########.fr       */
+/*   Updated: 2024/12/11 11:02:48 by trouilla         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "includes/push_swap.h"
+#include "../includes/push_swap.h"
 
 t_stack_node	*ft_last_node(t_stack_node *stack)
 {
@@ -20,10 +20,11 @@ t_stack_node	*ft_last_node(t_stack_node *stack)
 		stack = stack->next;
 	return (stack);
 }
+
 int	stack_size(t_stack_node *stack)
 {
 	int	count;
-	
+
 	if (!stack)
 		return (0);
 	count = 0;

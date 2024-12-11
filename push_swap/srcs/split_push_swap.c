@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   split_push_swap.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: toikirouillard <toikirouillard@student.    +#+  +:+       +#+        */
+/*   By: trouilla <trouilla@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/09 11:26:22 by trouilla          #+#    #+#             */
-/*   Updated: 2024/12/10 22:14:41 by toikirouill      ###   ########.fr       */
+/*   Updated: 2024/12/11 09:11:37 by trouilla         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "includes/push_swap.h"
+#include "../includes/push_swap.h"
 
 static int	count_words(char *str, char charset)
 {

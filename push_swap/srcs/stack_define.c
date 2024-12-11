@@ -3,33 +3,33 @@
 /*                                                        :::      ::::::::   */
 /*   stack_define.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: toikirouillard <toikirouillard@student.    +#+  +:+       +#+        */
+/*   By: trouilla <trouilla@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/10 13:32:03 by toikirouill       #+#    #+#             */
-/*   Updated: 2024/12/10 22:20:31 by toikirouill      ###   ########.fr       */
+/*   Updated: 2024/12/11 11:03:50 by trouilla         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "includes/push_swap.h"
+#include "../includes/push_swap.h"
 
-static long ft_atol(const char *str)
+static long	ft_atol(const char *s)
 {
-	long result;
-	int signe;
+	long	result;
+	int		signe;
 
 	result = 0;
 	signe = 1;
-	while (*str == ' ' || *str == '\t' || *str == '\n' || \
-			*str == '\r' || *str == '\f' || *str == '\v')
-		str++;
-	if (*str == '-' || *str == '+')
+	while (*s == ' ' || *s == '\t' || *s == '\n' || *s == '\r' || *s == '\f'
+		|| *s == '\v')
+		s++;
+	if (*s == '-' || *s == '+')
 	{
-		if (*str == '-')
+		if (*s == '-')
 			signe = -1;
-		str++;
+		s++;
 	}
-	while (ft_isdigit(*str))
-		result = result * 10 + (*str++ - 48);
+	while (ft_isdigit(*s))
+		result = result * 10 + (*s++ - '0');
 	return (result * signe);
 }
 
@@ -37,7 +37,7 @@ static void	append_node(t_stack_node **stack, int n)
 {
 	t_stack_node	*node;
 	t_stack_node	*last_node;
-	
+
 	if (!stack)
 		return ;
 	node = malloc(sizeof(t_stack_node));
@@ -55,7 +55,7 @@ static void	append_node(t_stack_node **stack, int n)
 	{
 		last_node = ft_last_node(*stack);
 		last_node->next = node;
-		node->prev = last_node;	
+		node->prev = last_node;
 	}
 }
 
@@ -63,7 +63,7 @@ void	define_stack_a(t_stack_node **a, char **av)
 {
 	long	n;
 	int		i;
-	
+
 	i = 0;
 	while (av[i])
 	{
@@ -93,7 +93,7 @@ t_stack_node	*cheapest_is(t_stack_node *stack)
 }
 
 void	rotate_stack(t_stack_node **stack, t_stack_node *top_node,
-						char name_of_stack)
+		char name_of_stack)
 {
 	while (*stack != top_node)
 	{
@@ -109,7 +109,7 @@ void	rotate_stack(t_stack_node **stack, t_stack_node *top_node,
 			if (top_node->median_sup)
 				rb(stack, true);
 			else
-				rrb(stack, false);
+				rrb(stack, true);
 		}
 	}
 }
