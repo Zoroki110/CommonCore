@@ -6,7 +6,7 @@
 /*   By: trouilla <trouilla@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/25 22:20:13 by trouilla          #+#    #+#             */
-/*   Updated: 2024/12/17 12:04:54 by trouilla         ###   ########.fr       */
+/*   Updated: 2024/12/20 10:45:26 by trouilla         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,8 +20,8 @@
 # include <stdint.h>
 
 int		ft_putchar(char c);
-int		ft_putnbr(int nb);
-int		ft_putstr(char *str);
+int		ft_putnbr_p(int nb);
+int		ft_putstr_p(char *str);
 int		ft_print_hex_min(unsigned int n);
 int		ft_print_hex_maj(unsigned int n);
 int		ft_putnbr_u(unsigned int n);

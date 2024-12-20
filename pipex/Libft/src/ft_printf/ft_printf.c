@@ -6,7 +6,7 @@
 /*   By: trouilla <trouilla@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/23 11:07:03 by trouilla          #+#    #+#             */
-/*   Updated: 2024/10/25 22:45:02 by trouilla         ###   ########.fr       */
+/*   Updated: 2024/12/20 10:51:59 by trouilla         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,9 +20,9 @@ int	ft_find_type(char c, va_list args)
 	if (c == 'c')
 		count += ft_putchar(va_arg(args, int));
 	else if (c == 's')
-		count += ft_putstr(va_arg(args, char *));
+		count += ft_putstr_p(va_arg(args, char *));
 	else if (c == 'd' || c == 'i')
-		count += ft_putnbr(va_arg(args, int));
+		count += ft_putnbr_p(va_arg(args, int));
 	else if (c == 'x')
 		count += ft_print_hex_min(va_arg(args, unsigned int));
 	else if (c == 'X')

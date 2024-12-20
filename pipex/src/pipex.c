@@ -6,11 +6,11 @@
 /*   By: trouilla <trouilla@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/17 10:33:11 by trouilla          #+#    #+#             */
-/*   Updated: 2024/12/20 09:08:57 by trouilla         ###   ########.fr       */
+/*   Updated: 2024/12/20 11:02:26 by trouilla         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "pipex.h"
+#include "../includes/pipex.h"
 
 void	check_input(int ac, char **av)
 {
@@ -35,8 +35,8 @@ t_args	*args_init(char **av, char **env)
 	args = malloc(sizeof(t_args));
 	if (!args)
 	    return (NULL);
-	args->cmd1 = ft_split(av[2], " ");
-	args->cmd2 = ft_split(av[3], " ");
+	args->cmd1 = ft_split(av[2], ' ');
+	args->cmd2 = ft_split(av[3], ' ');
     if (!args->cmd1[0] || !args->cmd2[0])
     {
         ft_free_array(args->cmd1);
@@ -64,18 +64,16 @@ int main(int ac, char **av, char **env)
     check_input(ac, av);
 	args = args_init(av, env);
     if (pipe(args->pipe_fd) < 0)
-    {
         return (perror("Error PIPE"), big_free(args->cmd1, args->cmd2, 
                 args->cmd1_path, args->cmd2_path), free(args), exit(1), 0);
-    }
-    child1 = fork;
+    child1 = fork();
     if (child1 == 0)
         manage_child1(args, av[1], env);
-    child2 = fork;
+    child2 = fork();
     if (child2 == 0)
         manage_child2(args, av[4], env);
-    close(args->pipefd[0]);
-    close(args->pipefd[1]);
+    close(args->pipe_fd[0]);
+    close(args->pipe_fd[1]);
     waitpid(child1, NULL, 0);
     waitpid(child2, NULL, 0);
     big_free(args->cmd1, args->cmd2, args->cmd1_path, args->cmd2_path);

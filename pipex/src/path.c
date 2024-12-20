@@ -6,11 +6,11 @@
 /*   By: trouilla <trouilla@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/20 07:46:52 by trouilla          #+#    #+#             */
-/*   Updated: 2024/12/20 08:08:34 by trouilla         ###   ########.fr       */
+/*   Updated: 2024/12/20 10:51:04 by trouilla         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "pipex.h"
+#include "../includes/pipex.h"
 
 char	*get_path(char **env)
 {
@@ -32,10 +32,10 @@ char	*find_path(char	*cmd, char **env)
 	t_path	path_struct;
 
 	path_struct.path_var = get_path(env);
-	if (!path_struct.path.var)
+	if (!path_struct.path_var)
 		return (NULL);
-	path_struct.paths = ft_split(path_struct.path_var, ":");
-	if (!path_struct.path_paths)
+	path_struct.paths = ft_split(path_struct.path_var, ':');
+	if (!path_struct.paths)
 		return (NULL);
 	i = -1;
 	while (path_struct.paths[i++])

@@ -6,7 +6,7 @@
 /*   By: trouilla <trouilla@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/17 10:04:02 by trouilla          #+#    #+#             */
-/*   Updated: 2024/12/20 08:58:21 by trouilla         ###   ########.fr       */
+/*   Updated: 2024/12/20 10:32:01 by trouilla         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,12 +17,14 @@
 # include <unistd.h>
 # include <stdlib.h>
 # include <stdio.h>
+# include <string.h>
 # include <sys/wait.h>
 # include <sys/types.h>
 # include <errno.h>
-# include "../include/ft_printf.h"
-# include "../include/get_next_line.h"
-# include "../include/libft.h"
+# include <limits.h>
+# include "../Libft/include/ft_printf.h"
+# include "../Libft/include/get_next_line.h"
+# include "../Libft/include/libft.h"
 
 typedef struct s_args
 {

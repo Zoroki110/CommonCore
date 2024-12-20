@@ -6,13 +6,13 @@
 /*   By: trouilla <trouilla@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/04 17:47:30 by trouilla          #+#    #+#             */
-/*   Updated: 2024/11/06 18:12:12 by trouilla         ###   ########.fr       */
+/*   Updated: 2024/12/20 10:55:01 by trouilla         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
 
-int	ft_strchr(const char *s, char c)
+int	ft_strchr_gnl(const char *s, char c)
 {
 	int	i;
 
@@ -26,7 +26,7 @@ int	ft_strchr(const char *s, char c)
 	return (0);
 }
 
-size_t	ft_strlen(const char *str)
+size_t	ft_strlen_gnl(const char *str)
 {
 	size_t	i;
 
@@ -45,7 +45,7 @@ char	*ft_strdup(const char *src)
 	if (!src)
 		return (NULL);
 	i = 0;
-	len = ft_strlen(src);
+	len = ft_strlen_gnl(src);
 	dest = (char *)malloc(sizeof(char) * (len + 1));
 	if (!dest)
 		return (NULL);
@@ -58,7 +58,7 @@ char	*ft_strdup(const char *src)
 	return (dest);
 }
 
-char	*ft_strjoin(char const *s1, char const *s2)
+char	*ft_strjoin_gnl(char const *s1, char const *s2)
 {
 	char	*str;
 	int		len_s1;
@@ -71,8 +71,8 @@ char	*ft_strjoin(char const *s1, char const *s2)
 		return (ft_strdup(s2));
 	if (!s2)
 		return (ft_strdup(s1));
-	len_s1 = ft_strlen(s1);
-	len_s2 = ft_strlen(s2);
+	len_s1 = ft_strlen_gnl(s1);
+	len_s2 = ft_strlen_gnl(s2);
 	str = (char *)malloc((len_s1 + len_s2 + 1) * sizeof(char));
 	if (!str)
 		return (NULL);

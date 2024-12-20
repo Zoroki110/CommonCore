@@ -6,11 +6,11 @@
 /*   By: trouilla <trouilla@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/18 11:48:17 by trouilla          #+#    #+#             */
-/*   Updated: 2024/12/20 08:22:57 by trouilla         ###   ########.fr       */
+/*   Updated: 2024/12/20 10:13:57 by trouilla         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "pipex.h"
+#include "../includes/pipex.h"
 
 int file_error(char *filename)
 {
