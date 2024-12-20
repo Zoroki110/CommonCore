@@ -6,7 +6,7 @@
 /*   By: trouilla <trouilla@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/17 10:33:11 by trouilla          #+#    #+#             */
-/*   Updated: 2024/12/20 08:16:32 by trouilla         ###   ########.fr       */
+/*   Updated: 2024/12/20 09:08:57 by trouilla         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ void	check_input(int ac, char **av)
         file_error(av[4]);
 }
 
-t_args	args_init(char **av, char **env)
+t_args	*args_init(char **av, char **env)
 {
 	t_args	*args;
 	
@@ -52,16 +52,33 @@ t_args	args_init(char **av, char **env)
         ft_putendl_fd("ERROR, command was not found", 2);
         exit(EXIT_FAILURE);
     }
-    
+    return (args);
 }
 
 int main(int ac, char **av, char **env)
 {
-	t_args	args;
-	pid_t	child_1;
-	pid_t	child_2;
+	t_args	*args;
+	pid_t	child1;
+	pid_t	child2;
 
-    //First check if input is correct 
     check_input(ac, av);
 	args = args_init(av, env);
+    if (pipe(args->pipe_fd) < 0)
+    {
+        return (perror("Error PIPE"), big_free(args->cmd1, args->cmd2, 
+                args->cmd1_path, args->cmd2_path), free(args), exit(1), 0);
+    }
+    child1 = fork;
+    if (child1 == 0)
+        manage_child1(args, av[1], env);
+    child2 = fork;
+    if (child2 == 0)
+        manage_child2(args, av[4], env);
+    close(args->pipefd[0]);
+    close(args->pipefd[1]);
+    waitpid(child1, NULL, 0);
+    waitpid(child2, NULL, 0);
+    big_free(args->cmd1, args->cmd2, args->cmd1_path, args->cmd2_path);
+    free(args);
+    exit(0);
 }

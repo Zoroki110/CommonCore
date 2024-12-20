@@ -6,7 +6,7 @@
 /*   By: trouilla <trouilla@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/17 10:04:02 by trouilla          #+#    #+#             */
-/*   Updated: 2024/12/20 08:14:00 by trouilla         ###   ########.fr       */
+/*   Updated: 2024/12/20 08:58:21 by trouilla         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,10 @@ int     file_error(char *filename);
 void	ft_free_array(char **array);
 void	*ft_return(char **array, void *value);
 void    ft_args_free(char *arg1, char *arg2, t_args *arg3);
+void	big_free(char **cmd1, char **cmd2, char *path1, char *path2);
 
+void	manage_child1(t_args *args, char *in, char **env);
+void	manage_child2(t_args *args, char *out, char **env);
 
 
 char	*get_path(char **env);
