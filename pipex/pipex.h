@@ -6,7 +6,7 @@
 /*   By: trouilla <trouilla@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/17 10:04:02 by trouilla          #+#    #+#             */
-/*   Updated: 2024/12/18 15:28:27 by trouilla         ###   ########.fr       */
+/*   Updated: 2024/12/20 08:14:00 by trouilla         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,8 +39,17 @@ typedef struct s_path
     char    *path_var;
     char    *path_full;
     char    *tmp;
-}
-int     error_file(char *filename);
+}   t_path;
+
+int     file_error(char *filename);
 void	ft_free_array(char **array);
+void	*ft_return(char **array, void *value);
+void    ft_args_free(char *arg1, char *arg2, t_args *arg3);
+
+
+
+char	*get_path(char **env);
+char	*find_path(char	*cmd, char **env);
+
 
 #endif 
