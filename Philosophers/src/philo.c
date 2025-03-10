@@ -1,36 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putnbr.c                                        :+:      :+:    :+:   */
+/*   philo.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: trouilla <trouilla@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/10/23 14:00:42 by trouilla          #+#    #+#             */
-/*   Updated: 2024/10/23 14:01:15 by trouilla         ###   ########.fr       */
+/*   Created: 2025/02/19 14:54:28 by trouilla          #+#    #+#             */
+/*   Updated: 2025/03/10 15:53:10 by trouilla         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "../includes/philo.h"
 
-void	ft_putnbr(int nb)
+int main(int ac, char **av)
 {
-	if (nb == -2147483648)
-	{
-		ft_putchar('-');
-		ft_putchar('2');
-		ft_putnbr(147483648);
-	}
-	else if (nb < 0)
-	{
-		ft_putchar('-');
-		nb = -nb;
-		ft_putnbr(nb);
-	}
-	else if (nb > 9)
-	{
-		ft_putnbr(nb / 10);
-		ft_putnbr(nb % 10);
-	}
-	else
-		ft_putchar(nb + '0');
+	t_rules			rules;
+	pthread_mutex_t *forks;
+	t_philo 		*philo;
+	
+	int dead = 0;
+	if (init_args(&rules, ac, av) == 1)
+		return (1);
+	if (init_simulation(&rules, &forks, &philo, dead) == 1)
+		return (1);
+	//start_simulation(philo, rules.nb_philo);
+	// printf("check philo%d\n", philo[0].dead);
+	(void)ac;
+	(void)av;
+	return (0);
 }
+ 

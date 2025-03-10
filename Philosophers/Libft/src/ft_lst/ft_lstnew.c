@@ -3,17 +3,17 @@
 /*                                                        :::      ::::::::   */
 /*   ft_lstnew.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: trouilla <trouilla@student.s19.be>         +#+  +:+       +#+        */
+/*   By: sinawara <sinawara@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/10/18 15:56:21 by trouilla          #+#    #+#             */
-/*   Updated: 2024/11/10 17:28:19 by trouilla         ###   ########.fr       */
+/*   Created: 2021/08/09 11:07:48 by ajordan-          #+#    #+#             */
+/*   Updated: 2024/10/28 11:54:23 by sinawara         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 /*
 *	DESCRIPTION
-*	Allocates (with malloc(3)) and returns a new element. The variable ’content’
-*	is initialized with the value of the parameter ’content’. The variable
+*	Allocates (with malloc(3)) and returns a new element. The variable ’content’ 
+*	is initialized with the value of the parameter ’content’. The variable 
 *	’next’ is initialized to NULL.
 *	PARAMETERS
 *	#1. The content to create the new element with.
@@ -29,23 +29,8 @@ t_list	*ft_lstnew(void *content)
 
 	new = (t_list *)malloc(sizeof(t_list));
 	if (!new)
-		return (NULL);
+		return (0);
+	new->next = 0;
 	new->content = content;
-	new->next = NULL;
 	return (new);
 }
-/*
-int main()
-{
-    t_list *element = ft_lstnew("Bonjour !");
-    if (element)
-    {
-        printf("Contenu de l'élément : %s\n", (char*)element->content);
-    }
-    else
-    {
-        printf("Échec de la création de l'élément.\n");
-    }
-    free(element);
-    return 0;
-}*/

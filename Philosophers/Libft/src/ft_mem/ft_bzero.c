@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_bzero.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: trouilla <trouilla@student.s19.be>         +#+  +:+       +#+        */
+/*   By: sinawara <sinawara@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/10/15 11:21:55 by trouilla          #+#    #+#             */
-/*   Updated: 2024/11/10 18:14:04 by trouilla         ###   ########.fr       */
+/*   Created: 2024/10/07 15:49:28 by sinawara          #+#    #+#             */
+/*   Updated: 2024/10/07 17:05:59 by sinawara         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,14 +14,27 @@
 
 void	ft_bzero(void *s, size_t n)
 {
-	size_t			i;
-	unsigned char	*d;
+	unsigned char	*str;
 
-	i = 0;
-	d = (unsigned char *)s;
-	while (i < n)
+	str = (unsigned char *)s;
+	while (n)
 	{
-		d[i] = 0;
-		i++;
+		*str = 0;
+		str++;
+		n--;
 	}
 }
+/*
+int	main(void)
+{
+	char str1[50] = "Hello, World!";
+	char str2[50] = "Libft testing";
+
+	printf("Before bzero: %s\n", str1);
+	ft_bzero(str1, 6);
+	printf("After bzero: ");
+	for (int i = 0; i < 13; i++)
+		printf("%d ", str1[i]); // Print the byte values to verify zeroing
+	return (0);
+}
+*/

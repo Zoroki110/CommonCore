@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_lstmap.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: trouilla <trouilla@student.s19.be>         +#+  +:+       +#+        */
+/*   By: sinawara <sinawara@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/10/18 18:26:00 by trouilla          #+#    #+#             */
-/*   Updated: 2024/10/19 20:55:49 by trouilla         ###   ########.fr       */
+/*   Created: 2021/08/10 11:03:37 by ajordan-          #+#    #+#             */
+/*   Updated: 2024/10/28 11:54:45 by sinawara         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,73 +14,28 @@
 
 t_list	*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *))
 {
-	t_list	*new_list;
-	t_list	*tmp;
+	t_list	*new;
+	t_list	*aux;
+	t_list	*temp;
 
-	if (!f || !del || !lst)
-		return (NULL);
-	new_list = NULL;
-	tmp = NULL;
+	if (!lst || !f)
+		return (0);
+	new = ft_lstnew(f(lst->content));
+	if (!new)
+		return (0);
+	aux = new;
+	lst = lst->next;
 	while (lst)
 	{
-		tmp = ft_lstnew((*f)(lst->content));
-		if (!tmp)
+		temp = ft_lstnew(f(lst->content));
+		if (!temp)
 		{
-			while (new_list)
-			{
-				tmp = new_list->next;
-				(*del)(new_list->content);
-				free(new_list);
-				new_list = tmp;
-			}
-			return (NULL);
+			ft_lstclear(&new, del);
+			return (0);
 		}
-		ft_lstadd_back(&new_list, tmp);
+		aux->next = temp;
+		aux = temp;
 		lst = lst->next;
 	}
-	return (new_list);
+	return (new);
 }
-/*
-void    *increment(void *content)
-{
-    int *new_value = malloc(sizeof(int));
-    if (!new_value)
-        return (NULL);
-    *new_value = *(int *)content + 1;
-    return (new_value);
-}
-
-void    delete_content(void *content)
-{
-    free(content);
-}
-int main()
-{
-    int a = 1, b = 2, c = 3;
-    t_list *lst = ft_lstnew(&a);
-    ft_lstadd_back(&lst, ft_lstnew(&b));
-    ft_lstadd_back(&lst, ft_lstnew(&c));
-
-    t_list *new_list = ft_lstmap(lst, increment, delete_content);
-
-    t_list *tmp = new_list;
-    while (tmp)
-    {
-        printf("Nouvelle valeur : %d\n", *(int *)tmp->content);
-        tmp = tmp->next;
-    }
-    while (new_list)
-    {
-        tmp = new_list->next;
-        delete_content(new_list->content);
-        free(new_list);
-        new_list = tmp;
-    }
-    while (lst)
-    {
-        tmp = lst->next;
-        free(lst);
-        lst = tmp;
-    }
-    return 0;
-}*/

@@ -3,40 +3,32 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strdup.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: trouilla <trouilla@student.s19.be>         +#+  +:+       +#+        */
+/*   By: sinawara <sinawara@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/10/15 11:19:04 by trouilla          #+#    #+#             */
-/*   Updated: 2024/11/10 19:37:25 by trouilla         ###   ########.fr       */
+/*   Created: 2024/10/07 15:55:09 by sinawara          #+#    #+#             */
+/*   Updated: 2024/10/07 15:55:16 by sinawara         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*ft_strdup(char const *src)
+char	*ft_strdup(const char *src)
 {
-	char	*dest;
-	int		len;
 	int		i;
+	char	*res;
 
-	len = ft_strlen(src);
 	i = 0;
-	dest = malloc(sizeof(char) * (len + 1));
-	if (!dest)
+	while (src[i])
+		i++;
+	res = malloc(sizeof(char) * i + 1);
+	if (!res)
 		return (NULL);
+	i = 0;
 	while (src[i])
 	{
-		dest[i] = src[i];
+		res[i] = src[i];
 		i++;
 	}
-	dest[i] = '\0';
-	return (dest);
+	res[i] = '\0';
+	return (res);
 }
-/*
-int	main(void)
-{
-	char s[] = "Alors ca a marche ?";
-	char *cpy;
-	cpy = ft_strdup(s);
-	printf("%s\n", cpy);
-	return (0);
-}*/

@@ -3,21 +3,17 @@
 /*                                                        :::      ::::::::   */
 /*   ft_putchar.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: trouilla <trouilla@student.s19.be>         +#+  +:+       +#+        */
+/*   By: sinawara <sinawara@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/10/23 14:17:45 by trouilla          #+#    #+#             */
-/*   Updated: 2024/10/25 22:13:32 by trouilla         ###   ########.fr       */
+/*   Created: 2024/10/15 11:22:10 by sinawara          #+#    #+#             */
+/*   Updated: 2024/10/30 13:26:55 by sinawara         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-int	ft_putchar(char c)
+int	ft_putchar_pf(char c)
 {
-	int	count;
-
-	count = 0;
-	write(1, &c, 1);
-	count++;
-	return (count);
+	write (1, &c, 1);
+	return (1);
 }

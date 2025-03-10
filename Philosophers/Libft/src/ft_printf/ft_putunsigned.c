@@ -1,33 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_toupper.c                                       :+:      :+:    :+:   */
+/*   ft_putunsigned.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sinawara <sinawara@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/10/07 15:57:16 by sinawara          #+#    #+#             */
-/*   Updated: 2024/10/07 15:57:17 by sinawara         ###   ########.fr       */
+/*   Created: 2024/10/15 11:22:32 by sinawara          #+#    #+#             */
+/*   Updated: 2024/10/24 14:13:16 by sinawara         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "ft_printf.h"
 
-int	ft_toupper(int c)
+int	ft_putunsigned(unsigned int n)
 {
-	if (c >= 'a' && c <= 'z')
-		c -= 32;
-	return (c);
+	char	nb_char;
+	int		len;
+
+	len = 0;
+	nb_char = n + 48;
+	if (n > 9)
+	{
+		len += ft_putunsigned((n / 10));
+		len += ft_putunsigned((n % 10));
+	}
+	else
+	{
+		write (1, &nb_char, 1);
+		len++;
+	}
+	return (len);
 }
-/*
-int main() {
-    char ch;
-
-    printf("Enter a character: ");
-    scanf("%c", &ch);
-
-    int upper = ft_toupper(ch);
-    printf("Uppercase character: %c\n", upper);
-
-    return 0;
-}
-*/

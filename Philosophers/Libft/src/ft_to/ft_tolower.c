@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_tolower.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: trouilla <trouilla@student.s19.be>         +#+  +:+       +#+        */
+/*   By: sinawara <sinawara@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/10/15 11:18:13 by trouilla          #+#    #+#             */
-/*   Updated: 2024/10/15 11:18:17 by trouilla         ###   ########.fr       */
+/*   Created: 2024/10/07 15:57:06 by sinawara          #+#    #+#             */
+/*   Updated: 2024/10/07 15:57:08 by sinawara         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,15 +15,19 @@
 int	ft_tolower(int c)
 {
 	if (c >= 'A' && c <= 'Z')
-		return (c + 'a' - 'A');
+		c += 32;
 	return (c);
 }
 /*
-#include <stdio.h>
+int main() {
+    char ch;
 
-int	main(void)
-{
-	char c = 'A';
-	printf("%c", ft_tolower(c));
-	return (0);
-}*/
+    printf("Enter a character: ");
+    scanf("%c", &ch);
+
+    int lower = ft_tolower(ch);
+    printf("Uppercase character: %c\n", lower);
+
+    return 0;
+}
+*/

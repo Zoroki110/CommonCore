@@ -1,33 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_toupper.c                                       :+:      :+:    :+:   */
+/*   ft_pointer.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sinawara <sinawara@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/10/07 15:57:16 by sinawara          #+#    #+#             */
-/*   Updated: 2024/10/07 15:57:17 by sinawara         ###   ########.fr       */
+/*   Created: 2024/10/14 22:15:29 by sinawara          #+#    #+#             */
+/*   Updated: 2024/10/28 13:36:59 by sinawara         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "ft_printf.h"
 
-int	ft_toupper(int c)
+int	ft_pointer(void *ptr)
 {
-	if (c >= 'a' && c <= 'z')
-		c -= 32;
-	return (c);
+	unsigned long long	address;
+	int					count;
+
+	count = 0;
+	address = (unsigned long long)ptr;
+	write(1, "0x", 2);
+	count += 2;
+	if (address == 0)
+		count += write(1, "0", 1);
+	else
+		count += ft_hexptr(address);
+	return (count);
 }
-/*
-int main() {
-    char ch;
-
-    printf("Enter a character: ");
-    scanf("%c", &ch);
-
-    int upper = ft_toupper(ch);
-    printf("Uppercase character: %c\n", upper);
-
-    return 0;
-}
-*/

@@ -5,35 +5,52 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: sinawara <sinawara@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/10/07 15:53:14 by sinawara          #+#    #+#             */
-/*   Updated: 2024/10/07 15:53:16 by sinawara         ###   ########.fr       */
+/*   Created: 2024/10/15 11:22:14 by sinawara          #+#    #+#             */
+/*   Updated: 2024/10/30 13:40:45 by sinawara         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "ft_printf.h"
 
-void	ft_putnbr_fd(int n, int fd)
+#include "ft_printf.h"
+
+static int	ft_min_int(int fd)
 {
+	write(fd, "-2147483648", 11);
+	return (11);
+}
+
+static int	ft_negative(int n, int fd)
+{
+	int	len;
+
+	len = 0;
+	write(fd, "-", 1);
+	len++;
+	len += ft_putnbr_fd_pf(-n, fd);
+	return (len);
+}
+
+int	ft_putnbr_fd_pf(int n, int fd)
+{
+	int		len;
 	char	nb_char;
 
-	nb_char = n + 48;
+	len = 0;
+	nb_char = n + '0';
 	if (n == -2147483648)
+		return (ft_min_int(fd));
+	if (n < 0)
+		return (ft_negative(n, fd));
+	if (n > 9)
 	{
-		write (fd, "-", 1);
-		write (fd, "2", 1);
-		ft_putnbr_fd(147483648, fd);
-	}
-	else if (n < 0)
-	{
-		write (fd, "-", 1);
-		n = -n;
-		ft_putnbr_fd(n, fd);
-	}
-	else if (n > 9)
-	{
-		ft_putnbr_fd((n / 10), fd);
-		ft_putnbr_fd((n % 10), fd);
+		len += ft_putnbr_fd_pf(n / 10, fd);
+		len += ft_putnbr_fd_pf(n % 10, fd);
 	}
 	else
-		write (fd, &nb_char, 1);
+	{
+		write(fd, &nb_char, 1);
+		len++;
+	}
+	return (len);
 }

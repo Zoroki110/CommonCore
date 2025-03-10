@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_memchr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: trouilla <trouilla@student.s19.be>         +#+  +:+       +#+        */
+/*   By: sinawara <sinawara@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/10/15 11:19:51 by trouilla          #+#    #+#             */
-/*   Updated: 2024/11/10 18:11:51 by trouilla         ###   ########.fr       */
+/*   Created: 2024/10/07 15:51:38 by sinawara          #+#    #+#             */
+/*   Updated: 2024/10/07 15:51:45 by sinawara         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,26 +15,30 @@
 void	*ft_memchr(const void *s, int c, size_t n)
 {
 	size_t			i;
-	unsigned char	*str;
+	unsigned char	*chs;
 
+	chs = (unsigned char *)s;
 	i = 0;
-	str = (unsigned char *)s;
 	while (i < n)
 	{
-		if (*str == (unsigned char)c)
-			return (str);
+		if (*chs == (unsigned char)c)
+			return (chs);
 		i++;
-		str++;
+		chs++;
 	}
 	return (NULL);
 }
 /*
-int	main(void)
+int main(void)
 {
-	char src[50] = "regarde moi samuel !";
-	char *ret;
+    char data[] = { 'a', 'b', 'c', 'd', '\0', 'e', 'f' };
+    char *result = ft_memchr(data, 'e', 7);
 
-	ret = ft_memchr(src, 's', 15);
-	printf("%s", ret);
-	return (0);
-}*/
+    if (result != NULL)
+        printf("Found 'e' at position: 0%ld\n", result - data);
+    else
+        printf("Character not found.\n");
+
+    return 0;
+}
+*/

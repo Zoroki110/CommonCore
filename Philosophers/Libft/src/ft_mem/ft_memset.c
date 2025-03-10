@@ -3,37 +3,46 @@
 /*                                                        :::      ::::::::   */
 /*   ft_memset.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: trouilla <trouilla@student.s19.be>         +#+  +:+       +#+        */
+/*   By: sinawara <sinawara@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/10/15 11:19:17 by trouilla          #+#    #+#             */
-/*   Updated: 2024/10/15 11:19:19 by trouilla         ###   ########.fr       */
+/*   Created: 2024/10/07 15:52:49 by sinawara          #+#    #+#             */
+/*   Updated: 2024/10/07 15:52:50 by sinawara         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "stdlib.h"
+#include "libft.h"
 
 void	*ft_memset(void *b, int c, size_t len)
 {
-	size_t			i;
-	unsigned char	*d;
+	unsigned char	*str;
 
-	i = 0;
-	d = (unsigned char *)b;
-	while (i < len)
+	str = (unsigned char *)b;
+	while (len)
 	{
-		d[i++] = (unsigned char)c;
+		*str = (unsigned char)c;
+		str++;
+		len--;
 	}
 	return (b);
 }
 /*
-#include <stdio.h>
-
 int	main(void)
 {
-	char str[50];
-	strcpy(str, "This is string.h library function");
-	puts(str);
-	ft_memset(str, '$', 5);
-	puts(str);
+	char str1[50] = "Hello, World!";
+	char str2[50] = "Libft testing";
+
+	printf("Before memset: %s\n", str1);
+	ft_memset(str1, '*', 5);
+
+	// Should modify first 5 characters to '*'
+	printf("After memset: %s\n", str1);
+
+	printf("Before memset: %s\n", str2);
+	ft_memset(str2, '-', 7);
+	
+	// Should modify first 7 characters to '-'
+	printf("After memset: %s\n", str2);  
+
 	return (0);
-}*/
+}
+*/

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_isdigit.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: trouilla <trouilla@student.s19.be>         +#+  +:+       +#+        */
+/*   By: sinawara <sinawara@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/10/15 11:22:52 by trouilla          #+#    #+#             */
-/*   Updated: 2024/10/15 11:22:53 by trouilla         ###   ########.fr       */
+/*   Created: 2024/10/07 15:50:46 by sinawara          #+#    #+#             */
+/*   Updated: 2024/10/07 15:50:48 by sinawara         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,19 +19,16 @@ int	ft_isdigit(int c)
 	return (0);
 }
 /*
-#include <stdio.h>
-
 int	main(void)
 {
-	int a = 'A';
-	int b = 3;
-	int c = 36;
-	int d = '4';
+	char test1 = '5';
+	char test2 = 'a';
+	char test3 = '#';
 
-	printf("%d\n", ft_isdigit(a));
-	printf("%d\n", ft_isdigit(b));
-	printf("%d\n", ft_isdigit(c));
-	printf("%d\n", ft_isdigit(d));
+	printf("Test with '%c': %d\n", test1, ft_isdigit(test2)); // Should return 1
+	printf("Test with '%c': %d\n", test2, ft_isdigit(test4)); // Should return 0
+	printf("Test with '%c': %d\n", test3, ft_isdigit(test5)); // Should return 0
 
 	return (0);
-}*/
+}
+*/

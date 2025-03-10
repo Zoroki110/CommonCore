@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_atoi.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: trouilla <trouilla@student.s19.be>         +#+  +:+       +#+        */
+/*   By: sinawara <sinawara@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/10/15 11:21:02 by trouilla          #+#    #+#             */
-/*   Updated: 2024/11/10 19:01:58 by trouilla         ###   ########.fr       */
+/*   Created: 2024/10/07 15:49:09 by sinawara          #+#    #+#             */
+/*   Updated: 2024/10/07 17:04:56 by sinawara         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,14 +48,12 @@ int	ft_atoi(const char *str)
 	return (num);
 }
 /*
-#include <stdio.h>
-#include <stdlib.h>
-
-int	main(void)
+int main()
 {
-	char test[] = "     -123ab3";
+	char str[] = "-27372833";
+	int res = ft_atoi(str);
 
-	printf("%d\n", ft_atoi(test));
-	printf("%d\n", atoi(test));
-	return (0);
-}*/
+	printf("Mon atoi : %d\n", res);
+	printf("Atoi fonction : %d\n", atoi(str));
+}
+*/

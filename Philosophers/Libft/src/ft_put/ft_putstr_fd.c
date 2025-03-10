@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_putstr_fd.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: trouilla <trouilla@student.s19.be>         +#+  +:+       +#+        */
+/*   By: sinawara <sinawara@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/10/15 11:23:37 by trouilla          #+#    #+#             */
-/*   Updated: 2024/10/17 16:48:13 by trouilla         ###   ########.fr       */
+/*   Created: 2024/10/07 15:53:41 by sinawara          #+#    #+#             */
+/*   Updated: 2024/10/07 15:53:43 by sinawara         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,3 +23,11 @@ void	ft_putstr_fd(char *s, int fd)
 		i++;
 	}
 }
+
+/*
+int main()
+{
+	char str[] = "HELLO";
+	ft_putstr_fd(str, 1);
+}
+*/

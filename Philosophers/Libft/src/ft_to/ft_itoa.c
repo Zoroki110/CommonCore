@@ -3,75 +3,85 @@
 /*                                                        :::      ::::::::   */
 /*   ft_itoa.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: trouilla <trouilla@student.s19.be>         +#+  +:+       +#+        */
+/*   By: sinawara <sinawara@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/10/16 22:56:36 by trouilla          #+#    #+#             */
-/*   Updated: 2024/10/17 16:45:45 by trouilla         ###   ########.fr       */
+/*   Created: 2024/10/07 16:50:23 by sinawara          #+#    #+#             */
+/*   Updated: 2024/10/14 14:36:52 by sinawara         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-static int	count_len(long n)
+static int	ft_size(int n)
 {
-	int	len;
+	int	i;
 
-	len = 0;
+	i = 1;
 	if (n < 0)
 	{
-		n *= (-1);
-		len++;
+		n *= -1;
+		i++;
 	}
-	if (n == 0)
-		return (len + 1);
-	while (n > 0)
+	if (n > 0)
 	{
-		n /= 10;
-		len++;
+		while (n >= 10)
+		{
+			n = n / 10;
+			i++;
+		}
 	}
-	return (len);
+	return (i);
 }
 
 char	*ft_itoa(int n)
 {
 	int		len;
-	char	*res;
-	long	nb;
+	char	*num;
+	int		is_negative;
 
-	nb = n;
-	len = count_len(nb);
-	res = (char *)malloc(sizeof(char) * (len + 1));
-	if (!res)
+	if (n == -2147483648)
+		return (ft_strdup("-2147483648"));
+	is_negative = 0;
+	len = ft_size(n);
+	num = (char *)malloc(sizeof(char) * (len + 1));
+	if (!num)
 		return (NULL);
-	res[len--] = '\0';
-	if (nb == 0)
-		res[0] = '0';
-	if (nb < 0)
+	num[len] = '\0';
+	if (n < 0)
 	{
-		res[0] = '-';
-		nb *= (-1);
+		n *= -1;
+		is_negative = 1;
 	}
-	while (nb > 0)
+	while (len-- > 0)
 	{
-		res[len--] = (nb % 10) + '0';
-		nb /= 10;
+		num[len] = (n % 10) + 48;
+		n = n / 10;
 	}
-	return (res);
+	if (is_negative)
+		num[0] = '-';
+	return (num);
 }
-
-/* int main()
+/*
+int main()
 {
-	int test1 = -1942;
-	int test2 = 0;
-	int test3 = 1942;
-	int test4 = 2147483647;
-	int test5 = ;
+	int test_numbers[] = {2147483647, -2147483648, 0, 6, 100000, -987654};
+    int i;
+    char *result;
 
-	printf("resultat : %s\n", ft_itoa(test1));
-	printf("resultat : %s\n", ft_itoa(test2));
-	printf("resultat : %s\n", ft_itoa(test3));
-	printf("resultat : %s\n", ft_itoa(test4));
-	printf("resultat : %s\n", ft_itoa(test5));
-	printf("resultat : %s\n", ft_itoa(0));
-	return (0);
-} */
+    printf("Testing :\n");
+    for (i = 0; i < 6; i++) // Loop through test numbers
+    {
+        result = ft_itoa(test_numbers[i]);
+        if (result)
+        {
+            printf("Number: %d -> String: %s\n", test_numbers[i], result);
+            free(result); // Remember to free the dynamically allocated memory
+        }
+        else
+        {
+            printf("Memory allocation failed for number: %d\n", test_numbers[i]);
+        }
+    }
+    return 0;
+}
+*/

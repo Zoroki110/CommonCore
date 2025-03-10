@@ -3,36 +3,36 @@
 /*                                                        :::      ::::::::   */
 /*   ft_printf.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: trouilla <trouilla@student.s19.be>         +#+  +:+       +#+        */
+/*   By: sinawara <sinawara@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/10/23 11:07:03 by trouilla          #+#    #+#             */
-/*   Updated: 2024/10/25 22:45:02 by trouilla         ###   ########.fr       */
+/*   Created: 2024/10/15 11:22:07 by sinawara          #+#    #+#             */
+/*   Updated: 2024/10/30 13:35:30 by sinawara         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-int	ft_find_type(char c, va_list args)
+static int	ft_find_format(char format, va_list args)
 {
 	int	count;
 
 	count = 0;
-	if (c == 'c')
-		count += ft_putchar(va_arg(args, int));
-	else if (c == 's')
-		count += ft_putstr(va_arg(args, char *));
-	else if (c == 'd' || c == 'i')
-		count += ft_putnbr(va_arg(args, int));
-	else if (c == 'x')
-		count += ft_print_hex_min(va_arg(args, unsigned int));
-	else if (c == 'X')
-		count += ft_print_hex_maj(va_arg(args, unsigned int));
-	else if (c == '%')
-		count += write(1, "%", 1);
-	else if (c == 'u')
-		count += ft_putnbr_u(va_arg(args, int));
-	else if (c == 'p')
-		count += ft_print_hex_p(va_arg(args, void *));
+	if (format == 'd' || format == 'i')
+		count += ft_putnbr_fd_pf(va_arg(args, int), 1);
+	else if (format == 'c')
+		count += ft_putchar_pf(va_arg(args, int));
+	else if (format == 'x')
+		count += ft_print_hex(va_arg(args, int));
+	else if (format == 'X')
+		count += ft_printcaps_hex(va_arg(args, int));
+	else if (format == 's')
+		count += ft_putstr_fd_pf(va_arg(args, char *), 1);
+	else if (format == 'u')
+		count += ft_unsigned(va_arg(args, int));
+	else if (format == 'p')
+		count += ft_pointer(va_arg(args, void *));
+	else if (format == '%')
+		return (write (1, "%%", 1));
 	else
 		return (0);
 	return (count);
@@ -42,33 +42,35 @@ int	ft_printf(const char *format, ...)
 {
 	va_list	args;
 	int		count;
-	int		i;
+	int		j;
 
 	count = 0;
-	i = 0;
+	j = 0;
 	va_start(args, format);
-	while (format[i])
+	while (format[j])
 	{
-		if (format[i] == '%')
+		if (format[j] == '%')
 		{
-			count += ft_find_type(format[i + 1], args);
-			i++;
+			while (format[j + 1] == ' ')
+				j++;
+			count += ft_find_format(format[j + 1], args);
+			j += 2;
 		}
 		else
-			count += write(1, &format[i], 1);
-		i++;
+		{
+			write(1, &format[j], 1);
+			count++;
+			j++;
+		}
 	}
 	va_end(args);
 	return (count);
 }
-/*
-int main()
+
+/* #include <stdio.h>
+int main(void)
 {
-	char ptr[] = "jnnjfjnfr";
-	//printf("%d\n", printf("%s\n", "123456"));
-	//ft_printf("%d\n", ft_printf("%s\n", "123456"));
-	printf("\n");
-	printf("\n");
-	// ft_printf("%p\n", ptr);	
+	ft_printf("%p\n", 10);
+	printf("%u\n", 10);
 	return 0;
-}*/
+} */

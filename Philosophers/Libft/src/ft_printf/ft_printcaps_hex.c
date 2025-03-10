@@ -1,33 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_toupper.c                                       :+:      :+:    :+:   */
+/*   ft_printcaps_hex.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sinawara <sinawara@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/10/07 15:57:16 by sinawara          #+#    #+#             */
-/*   Updated: 2024/10/07 15:57:17 by sinawara         ###   ########.fr       */
+/*   Created: 2024/10/15 11:22:02 by sinawara          #+#    #+#             */
+/*   Updated: 2024/10/15 11:22:02 by sinawara         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "ft_printf.h"
 
-int	ft_toupper(int c)
+int	ft_printcaps_hex(unsigned int n)
 {
-	if (c >= 'a' && c <= 'z')
+	int		len;
+	char	c;
+
+	len = 0;
+	if (n >= 16)
+		len += ft_printcaps_hex(n / 16);
+	n = n % 16;
+	if (n < 10)
+		c = n + '0';
+	else
+		c = n + 'a' - 10;
+	if (c >= 'a' && c <= 'f')
 		c -= 32;
-	return (c);
+	write(1, &c, 1);
+	len++;
+	return (len);
 }
-/*
-int main() {
-    char ch;
-
-    printf("Enter a character: ");
-    scanf("%c", &ch);
-
-    int upper = ft_toupper(ch);
-    printf("Uppercase character: %c\n", upper);
-
-    return 0;
-}
-*/

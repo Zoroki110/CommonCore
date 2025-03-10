@@ -1,35 +1,27 @@
-# **************************************************************************** #
-#                                                                              #
-#                                                         :::      ::::::::    #
-#    Makefile                                           :+:      :+:    :+:    #
-#                                                     +:+ +:+         +:+      #
-#    By: trouilla <trouilla@student.s19.be>         +#+  +:+       +#+         #
-#                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2024/10/21 15:40:23 by trouilla          #+#    #+#              #
-#    Updated: 2024/11/10 21:54:31 by trouilla         ###   ########.fr        #
-#                                                                              #
-# **************************************************************************** #
-
 NAME		=	libft.a
 INCLUDES	=	include/
-SRC_DIR		=	src/
+SRC_DIR 	=	src/
 OBJ_DIR		=	obj/
 CC			=	gcc
-CFLAGS		=	-Wall -Wextra -Werror -I
+CFLAGS		=	-Wall -Werror -Wextra -I
 RM			=	rm -f
 AR			=	ar rcs
 
 #Colors
 
 DEF_COLOR = \033[0;39m
+GRAY = \033[0;90m
+RED = \033[0;91m
 GREEN = \033[0;92m
 YELLOW = \033[0;93m
 BLUE = \033[0;94m
+MAGENTA = \033[0;95m
 CYAN = \033[0;96m
+WHITE = \033[0;97m
 
-#######################
-###		SOURCES		###
-#######################
+####################
+###   SOURCES    ###
+####################
 
 FTIS_DIR	=	ft_is/
 FTIS		=	ft_isalnum ft_isalpha ft_isascii ft_isdigit ft_isprint
@@ -52,10 +44,10 @@ FTLST_DIR	=	ft_lst/
 FTLST		=	ft_lstadd_back ft_lstadd_front ft_lstclear ft_lstdelone \
 				ft_lstiter ft_lstlast ft_lstmap ft_lstnew ft_lstsize
 
-FTPRINTF_DIR		=	ft_printf/
-FTPRINTF			=	ft_printf ft_putchar ft_putnbr ft_putstr \
-						ft_print_hex_Maj ft_print_hex_min ft_putnbr_u \
-						ft_print_hex_p ft_hexptr
+FTPRINTF_DIR	=	ft_printf/
+FTPRINTF		=	ft_printf ft_putchar ft_putnbr_fd ft_putstr_fd \
+					ft_print_hex ft_printcaps_hex ft_unsigned \
+					ft_putunsigned ft_pointer ft_hexptr
 
 GET_NEXT_LINE_DIR	=	get_next_line/
 GET_NEXT_LINE		=	get_next_line get_next_line_utils
@@ -73,21 +65,32 @@ SRC 		= 	$(addprefix $(SRC_DIR), $(addsuffix .c, $(SRC_FILES)))
 OBJ 		= 	$(addprefix $(OBJ_DIR), $(addsuffix .o, $(SRC_FILES)))
 BONUS_OBJ	= 	$(addprefix $(OBJ_DIR), $(addsuffix .o, $(BONUS_FILES)))
 
-###################
-### COMPILATION	###
-###################
+###
 
 OBJF		=	.cache_exists
 
+# Make sure SRCS is correctly defined
+TOTAL_FILES := $(words $(SRC) $(addprefix $(SRC_DIR), $(addsuffix .c, $(BONUS_FILES))))
+COMPILED_FILES = 0
+
+define progress_bar
+    @$(eval COMPILED_FILES=$(shell echo $$(($(COMPILED_FILES) + 1))))
+    @if [ $(TOTAL_FILES) -gt 0 ]; then \
+        PROGRESS=$$(($(COMPILED_FILES) * 100 / $(TOTAL_FILES))); \
+        BAR=$$(seq -s= $$(($$PROGRESS / 5)) | sed 's/[0-9]//g'); \
+        printf "\rCompiling project[%-20s] %d%%" $$BAR $$PROGRESS; \
+    fi
+endef
+
 all: $(NAME)
 
-$(NAME):	$(OBJ)
-			@$(AR) $(NAME) $(OBJ)
-			@echo "$(GREEN)Libft compiled!$(DEF_COLOR)"
+$(NAME):	$(OBJ) $(BONUS_OBJ)
+			@$(AR) $(NAME) $(OBJ) $(BONUS_OBJ)
+			@echo "$(GREEN)\nlibft - Compiled with Success$(DEF_COLOR)"
 
 $(OBJ_DIR)%.o : $(SRC_DIR)%.c | $(OBJF)
-			@echo "$(YELLOW)Compiling: $< $(DEF_COLOR)"
 			@$(CC) $(CFLAGS) $(INCLUDES) -c $< -o $@
+			$(call progress_bar)
 
 $(OBJF):
 			@mkdir -p $(OBJ_DIR)
@@ -99,11 +102,6 @@ $(OBJF):
 			@mkdir -p $(OBJ_DIR)$(FTLST_DIR)
 			@mkdir -p $(OBJ_DIR)$(FTPRINTF_DIR)
 			@mkdir -p $(OBJ_DIR)$(GET_NEXT_LINE_DIR)
-
-
-bonus:		$(BONUS_OBJ)
-			@$(AR) $(NAME) $(BONUS_OBJ)
-			@echo "$(GREEN)Libft bonus compiled!$(DEF_COLOR)"
 
 clean:
 			@$(RM) -rf $(OBJ_DIR)

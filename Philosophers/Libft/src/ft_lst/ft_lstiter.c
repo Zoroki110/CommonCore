@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   ft_lstiter.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: trouilla <trouilla@student.s19.be>         +#+  +:+       +#+        */
+/*   By: sinawara <sinawara@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/10/18 18:19:27 by trouilla          #+#    #+#             */
-/*   Updated: 2024/11/10 17:28:17 by trouilla         ###   ########.fr       */
+/*   Created: 2021/08/10 10:41:56 by ajordan-          #+#    #+#             */
+/*   Updated: 2024/10/28 11:20:10 by sinawara         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 /*
 *	DESCRIPTION
-*	Iterates the list ’lst’ and applies the function ’f’ to the content of each
+*	Iterates the list ’lst’ and applies the function ’f’ to the content of each 
 *	element.
 *	PARAMETERS
 *	#1. The adress of a pointer to an element.
@@ -25,11 +25,12 @@
 
 void	ft_lstiter(t_list *lst, void (*f)(void *))
 {
-	if (!lst || !f)
-		return ;
-	while (lst)
+	if (f)
 	{
-		f(lst->content);
-		lst = lst->next;
+		while (lst)
+		{
+			f(lst->content);
+			lst = lst->next;
+		}
 	}
 }
