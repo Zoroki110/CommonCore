@@ -6,7 +6,7 @@
 /*   By: trouilla <trouilla@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/06 11:43:57 by trouilla          #+#    #+#             */
-/*   Updated: 2025/03/10 14:32:25 by trouilla         ###   ########.fr       */
+/*   Updated: 2025/03/11 10:17:54 by trouilla         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,4 +53,40 @@ void print_status(t_philo *philo, char *status)
        printf("%ld %d %s\n", get_time() - philo->start_time, 
               philo->id, status);
    pthread_mutex_unlock(philo->write_lock);
+}
+
+static int	ft_sign(int num, int min_count, int max_count)
+{
+	if (min_count == 1)
+		num = -num;
+	if ((min_count > 0 && max_count > 0) || min_count > 1 || max_count > 1)
+		num = 0;
+	return (num);
+}
+
+int	ft_atoi(const char *str)
+{
+	int	i;
+	int	min_count;
+	int	max_count;
+	int	num;
+
+	i = 0;
+	min_count = 0;
+	max_count = 0;
+	num = 0;
+	while ((str[i] == ' ' || (str[i] >= 9 && str[i] <= 13)) && str[i])
+		i++;
+	while ((str[i] == '+' || str[i] == '-') && str[i])
+	{
+		if (str[i] == '-')
+			min_count++;
+		if (str[i] == '+')
+			max_count++;
+		i++;
+	}
+	while ((str[i] >= '0' && str[i] <= '9') && str[i])
+		num = (num * 10) + (str[i++] - 48);
+	num = ft_sign(num, min_count, max_count);
+	return (num);
 }
