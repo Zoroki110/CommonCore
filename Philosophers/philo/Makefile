@@ -6,11 +6,11 @@
 #    By: trouilla <trouilla@student.s19.be>         +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/03/10 10:21:17 by trouilla          #+#    #+#              #
-#    Updated: 2025/03/13 14:33:32 by trouilla         ###   ########.fr        #
+#    Updated: 2025/03/13 15:15:04 by trouilla         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME = philosophers
+NAME = philo
 
 SRC_DIR				= src/
 OBJ_DIR				= obj/
