@@ -1,20 +1,19 @@
-#include <iostream>
-#include <string>
+#include "Zombie.hpp"
+
+Zombie* zombieHorde(int N, std::string name);
 
 int main() {
-    std::string brain = "HI THIS IS BRAIN";
-    std::string* stringPTR = &brain;
-    std::string& stringREF = brain;
+    int numberOfZombies = 5;
 
-    std::cout << "Address de brain:       " << &brain << std::endl;
-    std::cout << "Address pointe par PTR: " << stringPTR << std::endl;
-    std::cout << "Address pointe par REF: " << &stringREF << std::endl;
+    Zombie* horde = zombieHorde(numberOfZombies, "Zombie");
 
-    std::cout << "-------------------------------------" << std::endl;
+    if (horde != NULL) {
+        for (int i = 0; i < numberOfZombies; ++i) {
+            horde[i].announce();
+        }
+    }
 
-    std::cout << "Valeur de brain:         " << brain << std::endl;
-    std::cout << "Valeur pointe de PTR:    " << *stringPTR << std::endl;
-    std::cout << "Valeur reference de REF: " << stringREF << std::endl;
+    delete[] horde;
 
     return 0;
 }
