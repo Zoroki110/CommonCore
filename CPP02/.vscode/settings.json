@@ -26,6 +26,9 @@
 		"system_error": "cpp",
 		"type_traits": "cpp",
 		"typeinfo": "cpp",
-		"*.tcc": "cpp"
+		"*.tcc": "cpp",
+		"atomic": "cpp",
+		"iterator": "cpp",
+		"ranges": "cpp"
 	}
 }
