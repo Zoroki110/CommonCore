@@ -38,16 +38,16 @@ public :
 	Fixed operator*(const Fixed& other) const;
 //Incrementation and decrementation :
 	Fixed& operator++();	//++i
-	Fixed& operator++(int);	//i++
+	Fixed operator++(int);	//i++
 	Fixed& operator--();	//--i
-	Fixed& operator--(int); //i--
+	Fixed operator--(int); //i--
 //Function min and max:
 	static Fixed& min(Fixed& a, Fixed& b);
 	static const Fixed& min(const Fixed&a, const Fixed& b);
 	static Fixed& max(Fixed& a, Fixed& b);
 	static const Fixed& max(const Fixed&a, const Fixed& b);
 };
-
+// Surcharge de l’opérateur <<
 std::ostream& operator<<(std::ostream& out, const Fixed& value);
 
 #endif

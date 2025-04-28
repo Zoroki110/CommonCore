@@ -1,4 +1,4 @@
-NAME = fixed_again_and again
+NAME = fixed_again_and_again
 
 CXX = c++
 CXXFLAGS = -Wall -Wextra -Werror -std=c++98
