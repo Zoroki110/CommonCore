@@ -13,12 +13,19 @@ private :
 public :
 
 	Fixed();
+	Fixed(const int n);
+	Fixed(const float f);
 	Fixed(const Fixed& other);
 	Fixed& operator=(const Fixed& other);
 	~Fixed();
 
+	float toFloat(void) const;
+	int toInt(void) const;
+
 	int getRawBits(void) const;
 	void setRawBits(int const raw);
 };
+
+std::ostream& operator<<(std::ostream& out, const Fixed& value);
 
 #endif
