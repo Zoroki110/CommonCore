@@ -16,13 +16,13 @@ int main() {
 			std::cout << "Exiting Phonebook. Goodbye! 👋" << std::endl;
 			break;
 		}
-		if (command == "ADD"){
+		if (command == "ADD" || command == "add") {
 			phonebook.addContact();
 		}
-		else if (command == "SEARCH"){
+		else if (command == "SEARCH" || command == "search") {
 			phonebook.searchContact();
 		}
-		else if (command == "EXIT"){
+		else if (command == "EXIT" || command == "exit") {
 			std::cout << "Exiting Phonebook. Goodbye! 👋" << std::endl;
 			break;
 		}
