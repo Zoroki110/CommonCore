@@ -5,16 +5,15 @@
 #                                                     +:+ +:+         +:+      #
 #    By: trouilla <trouilla@student.s19.be>         +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2025/06/11 15:51:10 by trouilla          #+#    #+#              #
-#    Updated: 2025/06/11 20:05:48 by trouilla         ###   ########.fr        #
+#    Created: 2025/06/12 08:49:58 by trouilla          #+#    #+#              #
+#    Updated: 2025/06/12 08:50:14 by trouilla         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME			= so_long
 
 CC				= cc
-CFLAGS			= -Wall -Wextra -Werror -g #-fsanitize=address
-#LDFLAGS			= -fsanitize=address -g
+CFLAGS			= -Wall -Wextra -Werror -g
 
 RM				= rm -f
 

@@ -6,16 +6,16 @@
 /*   By: trouilla <trouilla@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/11 16:19:57 by trouilla          #+#    #+#             */
-/*   Updated: 2025/06/11 20:10:24 by trouilla         ###   ########.fr       */
+/*   Updated: 2025/06/12 08:31:37 by trouilla         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/so_long.h"
 
-char **copy_map(char **map, int heigth)
+char	**copy_map(char **map, int heigth)
 {
-	char **copy;
-	int i;
+	char	**copy;
+	int		i;
 
 	copy = malloc(sizeof(char *) * (heigth + 1));
 	if (!copy)
@@ -26,7 +26,7 @@ char **copy_map(char **map, int heigth)
 		copy[i] = ft_strdup(map[i]);
 		if (!copy[i])
 		{
-			free_map(copy);	
+			free_map(copy);
 			return (NULL);
 		}
 		i++;
@@ -35,10 +35,10 @@ char **copy_map(char **map, int heigth)
 	return (copy);
 }
 
-int find_player(char **map, int *px, int *py)
+int	find_player(char **map, int *px, int *py)
 {
-	int x;
-	int y;
+	int	x;
+	int	y;
 
 	y = 0;
 	while (map[y])
@@ -59,7 +59,7 @@ int find_player(char **map, int *px, int *py)
 	return (1);
 }
 
-void flood_fill(char **map, int x, int y)
+void	flood_fill(char **map, int x, int y)
 {
 	if (map[y][x] == '1' || map[y][x] == 'V')
 		return ;
@@ -70,10 +70,10 @@ void flood_fill(char **map, int x, int y)
 	flood_fill(map, x, y - 1);
 }
 
-int check_reachable(char **map)
+int	check_reachable(char **map)
 {
-	int x;
-	int y;
+	int	x;
+	int	y;
 
 	y = 0;
 	while (map[y])
@@ -90,11 +90,11 @@ int check_reachable(char **map)
 	return (1);
 }
 
-int check_path(t_game *game)
+int	check_path(t_game *game)
 {
-	char **map_copy;
-	int px;
-	int py;
+	char	**map_copy;
+	int		px;
+	int		py;
 
 	map_copy = copy_map(game->map, game->height);
 	if (!map_copy)

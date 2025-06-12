@@ -6,7 +6,7 @@
 /*   By: trouilla <trouilla@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/11 15:38:56 by trouilla          #+#    #+#             */
-/*   Updated: 2025/06/11 20:24:21 by trouilla         ###   ########.fr       */
+/*   Updated: 2025/06/12 08:28:57 by trouilla         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,7 +77,7 @@ int	check_map(t_game *game)
 	while (y < game->height)
 	{
 		line_len = (int)ft_strlen(game->map[y]);
-		if (line_len != game->width + 1)
+		if (line_len != game->width)
 		{
 			write(2, "Error\nMap is not rectangular\n", 30);
 			return (0);
